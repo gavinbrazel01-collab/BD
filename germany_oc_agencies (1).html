@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+    color: #73726c;
+  }
+
+  .section {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-bka   .card-abbr { color: #993C1D; }
+  .tier-state .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Germany — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — supports member-state investigations, runs EMPACT</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Coordinates cross-border prosecutions and joint investigation teams</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Global notices, red notices, cross-border fugitive tracking</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL COORDINATION -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Federal level — coordination &amp; prosecution
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Bundesebene</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/bundesinnenministerium" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BMI</span>
+      <span class="card-name">Bundesministerium des Innern und für Heimat</span>
+      <span class="card-role">Federal Ministry of Interior — policy, oversight of BKA &amp; BfV</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bundesministerium-der-justiz" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BMJ</span>
+      <span class="card-name">Bundesministerium der Justiz</span>
+      <span class="card-role">Federal Ministry of Justice — criminal law, prosecution framework</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.generalbundesanwalt.de" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GBA</span>
+      <span class="card-name">Generalbundesanwalt beim Bundesgerichtshof</span>
+      <span class="card-role">Federal Prosecutor General — high-threat OC and terrorism cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL AGENCIES -->
+<div class="section tier-bka">
+  <div class="section-label">
+    Federal investigation agencies
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Bundesbehörden</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/bundeskriminalamt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BKA</span>
+      <span class="card-name">Bundeskriminalamt</span>
+      <span class="card-role">Lead federal criminal agency — OC, drugs (SO51), human trafficking (SO32), organised crime (SO41)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bundesamt-f%C3%BCr-verfassungsschutz" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BfV</span>
+      <span class="card-name">Bundesamt für Verfassungsschutz</span>
+      <span class="card-role">Domestic intelligence — OC with extremist or state-threat dimension</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-i2">Palantir / i2</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.zoll.de/DE/Der-Zoll/Behoerden-Dienststellen/Zollkriminalamt/zollkriminalamt_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ZKA</span>
+      <span class="card-name">Zollkriminalamt</span>
+      <span class="card-role">Drug smuggling at borders, financial crime, money laundering</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- BKA DIVISIONS -->
+<div class="section tier-bka">
+  <div class="section-label">
+    BKA specialist divisions
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">within BKA</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.bka.de/DE/UnsereAufgaben/Deliktsbereiche/OrganisierteKriminalitaet/organisierteKriminalitaet_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SO41 — Organised crime</span>
+      <span class="card-name">BKA Section SO41</span>
+      <span class="card-role">National OC network analysis, cross-state syndicate cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bka.de/DE/UnsereAufgaben/Deliktsbereiche/Rauschgiftkriminalitaet/rauschgiftkriminalitaet_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SO51 — Drug trafficking</span>
+      <span class="card-name">BKA Section SO51</span>
+      <span class="card-role">Major supply chain investigations, international drug trafficking</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bka.de/DE/UnsereAufgaben/Deliktsbereiche/Menschenhandel/menschenhandel_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SO32 — Human trafficking</span>
+      <span class="card-name">BKA Section SO32</span>
+      <span class="card-role">Cases under §§232–236 StGB — trafficking, forced labour, exploitation</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- STATE LEVEL -->
+<div class="section tier-state">
+  <div class="section-label">
+    State (Länder) level — key LKA pages
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">16 Länder</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/landeskriminalamt-nrw" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">LKA NRW</span>
+      <span class="card-name">Landeskriminalamt Nordrhein-Westfalen</span>
+      <span class="card-role">Largest state CID — Düsseldorf; major OC, drugs &amp; HT caseload</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bayerische-polizei" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">LKA Bayern</span>
+      <span class="card-name">Bayerische Polizei (incl. LKA Bayern)</span>
+      <span class="card-role">Munich-based; major transit route investigations, Italian OC links</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.berlin.de/polizei/dienststellen/landeskriminalamt/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LKA Berlin</span>
+      <span class="card-name">Landeskriminalamt Berlin</span>
+      <span class="card-role">Capital city CID — clan-crime and human trafficking focus</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/landeskriminalamt-niedersachsen" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">LKA Niedersachsen</span>
+      <span class="card-name">Landeskriminalamt Niedersachsen</span>
+      <span class="card-role">Hannover-based; port smuggling routes, OC investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/polizeihamburg" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">LKA Hamburg</span>
+      <span class="card-name">Polizei Hamburg (incl. LKA Hamburg)</span>
+      <span class="card-role">Port of Hamburg — major cocaine import investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://lka.rlp.de" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LKA Rheinland-Pfalz</span>
+      <span class="card-name">Landeskriminalamt Rheinland-Pfalz</span>
+      <span class="card-role">Mainz — border region, cross-border drug flows</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- STATE PROSECUTION & INTELLIGENCE -->
+<div class="section tier-state">
+  <div class="section-label">State prosecution &amp; intelligence</div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.generalbundesanwalt.de/DE/Home/home_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Staatsanwaltschaft (each Land)</span>
+      <span class="card-name">State prosecution offices — formally direct all criminal investigations</span>
+      <span class="card-role">Warrant authority, direct LKA operations, bring charges. Each Land has its own Staatsanwaltschaft.</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.verfassungsschutz.de/DE/verfassungsschutzbehoerden/verfassungsschutzbehoerden_node.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Landesverfassungsschutz</span>
+      <span class="card-name">State domestic intelligence offices (16 Länder)</span>
+      <span class="card-role">Pre-investigative intelligence on OC–extremism overlap. Feeds BfV and LKA.</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by BKA and all 16 LKAs — link analysis, timelines, entity network charting for OC cases</span>
+    </div>
+    <div class="tool-item">
+      <strong>Palantir Gotham</strong>
+      <span>BfV and select LKAs — large-scale data fusion, pattern-of-life, predictive analysis</span>
+    </div>
+    <div class="tool-item">
+      <strong>INPOL / SIS II / EncroChat data</strong>
+      <span>Shared police databases across federal and state agencies; EU-wide Schengen lookups</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

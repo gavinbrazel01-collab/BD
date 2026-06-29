@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugal — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-mar   { background: #E3F2FD; color: #0D47A1; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-pj    .card-abbr { color: #993C1D; }
+  .tier-gnr   .card-abbr { color: #1B6B3A; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Portugal — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). The Polícia Judiciária (PJ) is Portugal's lead criminal investigation authority for organised crime, drugs and human trafficking. Portugal is a key Atlantic cocaine gateway for Europe and hosts MAOC-N — the EU's maritime drug interdiction centre — in Lisbon.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">PJ and GNR represent Portugal in EMPACT operations. Portugal is a leading contributor to Europol's drug trafficking and OC work given its Atlantic position and Lusophone OC network links</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Portugal's national member coordinates joint investigation teams — particularly active on cross-border OC and drug trafficking cases with Spain, France and Brazil</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Portugal's NCB is housed within the PJ in Lisbon — staffed by officers from PJ, GNR, PSP. Regular participation in INTERPOL-led HT and drug operations including AFRIPOL-linked Atlantic route operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MAOC-N — UNIQUE TO PORTUGAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    MAOC-N — Lisbon-based EU maritime drug interdiction centre
+    <span class="tier-badge" style="background:#E3F2FD;color:#0D47A1;">Lisbon HQ</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://maoc.eu" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MAOC-N</span>
+      <span class="card-name">Maritime Analysis and Operations Centre — Narcotics</span>
+      <span class="card-role">Headquartered in Lisbon — coordinates Atlantic and Mediterranean maritime drug interception across France, Ireland, Italy, Netherlands, Portugal, Spain, UK (+ Belgium and Germany joined 2024). Co-funded by EU Internal Security Fund. PJ is primary Portuguese partner. 259+ tonnes cocaine seized since inception</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-mar">maritime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">EU-led</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://maoc.eu/operations/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MAOC-N — Operations</span>
+      <span class="card-name">MAOC-N Operational Activity</span>
+      <span class="card-role">Recent operations include Alfa-Lima (54 arrested, Atlantic drug route, 2026), and coordination with PJ on visits from BKA, Guardia di Finanza and Nordic agencies. US DEA Lisbon Country Office embeds liaison officers</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-mar">maritime</span>
+        <span class="tag tag-int">operations</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MINISTERIAL -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Ministerial &amp; prosecution level
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Governo</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.mai.gov.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MAI</span>
+      <span class="card-name">Ministério da Administração Interna</span>
+      <span class="card-role">Ministry of Internal Administration — oversees PSP, GNR and border/immigration policy. Sets national security strategy including the Criminal Policy Law 2023–2025 prioritising OC and HT</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/ministerio-da-justica-de-portugal" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">MJ</span>
+      <span class="card-name">Ministério da Justiça</span>
+      <span class="card-role">Ministry of Justice — oversees PJ, the court system and DGRSP (prisons). Funds HT victim support. Adopted 2025–2027 National Action Plan on Trafficking in December 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.ministeriopublico.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PGR / DIAP</span>
+      <span class="card-name">Procuradoria-Geral da República / DIAP</span>
+      <span class="card-role">Attorney General's Office — directs criminal investigations and prosecutes OC. DIAP (Departamento de Investigação e Ação Penal) specialises in serious crime. In 2025 PGR published new action plan to centralise HT data and prosecution strategy</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLÍCIA JUDICIÁRIA -->
+<div class="section tier-pj">
+  <div class="section-label">
+    Polícia Judiciária (PJ) — lead criminal investigation police
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Polícia Judiciária</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/pol%C3%ADcia-judici%C3%A1ria" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJ</span>
+      <span class="card-name">Polícia Judiciária — Judiciary Police</span>
+      <span class="card-role">Portugal's lead criminal investigation authority under MJ. Sole responsibility for OC, drug trafficking and (since Oct 2023 dissolution of SEF) all HT investigations. Houses Portugal's INTERPOL NCB. 3 directorates: Lisbon, Porto, Coimbra/Centre</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policiajudiciaria.pt/unidades-nacionais/unidade-nacional-contra-terrorismo/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ — UNCT</span>
+      <span class="card-name">Unidade Nacional Contra o Terrorismo (within PJ)</span>
+      <span class="card-role">Counter-terrorism and OC with extremist links. Also covers OC–terrorism nexus including financing of terrorism from drug proceeds and transnational criminal networks</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policiajudiciaria.pt/unidades-nacionais/unidade-nacional-de-combate-a-corrupcao/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ — UNCC</span>
+      <span class="card-name">Unidade Nacional de Combate à Corrupção (within PJ)</span>
+      <span class="card-role">Anti-corruption and economic crime — OC financial flows, public corruption with organised crime links, money laundering. Works with DIAP on high-profile OC financial cases</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policiajudiciaria.pt/unidades-nacionais/unidade-nacional-de-investigacao-criminal/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ — UNIC</span>
+      <span class="card-name">Unidade Nacional de Investigação Criminal (within PJ)</span>
+      <span class="card-role">National criminal investigation unit — major OC cases, homicide, kidnapping, drug trafficking at national level. Coordinates with PJ regional directorates and MAOC-N on Atlantic cocaine seizures</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policiajudiciaria.pt/unidades-nacionais/unidade-nacional-de-investigacao-de-crimes-informaticos/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ — UNIC Cibercrime</span>
+      <span class="card-name">Cybercrime Unit (within PJ)</span>
+      <span class="card-role">Dark-web drug markets, cyber-enabled OC, digital fraud networks. Investigated DIGITAL STRESS-linked actors and dark-web counterfeit currency networks. Supported ECCP and Europol cyber operations</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policiajudiciaria.pt/laboratorio-de-policia-cientifica/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ — LPC</span>
+      <span class="card-name">Laboratório de Polícia Científica (within PJ)</span>
+      <span class="card-role">National forensic science laboratory — drug analysis, DNA, digital forensics supporting all PJ OC and HT investigations. Dismantled Europe's largest drug laboratory in Lourinhã in a notable recent case</span>
+      <div class="card-tags">
+        <span class="tag tag-int">forensics</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GNR & PSP -->
+<div class="section tier-gnr">
+  <div class="section-label">
+    GNR &amp; PSP — territorial &amp; public security police
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Forças de Segurança</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/guarda-nacional-republicana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">GNR</span>
+      <span class="card-name">Guarda Nacional Republicana</span>
+      <span class="card-role">Military-structured national gendarmerie — rural areas, borders, coasts and Azores/Madeira. Controls coastal border surveillance (UCCF) and Frontex operations. Investigates OC in rural Portugal; SEPNA covers environmental OC. Staffs Portugal's INTERPOL NCB alongside PJ</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-mar">maritime / border</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/policiasegurancapublica" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PSP</span>
+      <span class="card-name">Polícia de Segurança Pública</span>
+      <span class="card-role">Urban public security police — covers Lisbon, Porto and major cities. Airport screening (Lisbon, Porto, Faro) for HT and drug trafficking following SEF dissolution in Oct 2023. Investigates street-level OC and drug networks in urban areas</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST / PARTNER -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Specialist &amp; partner agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Parceiros especializados</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.aima.gov.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">AIMA</span>
+      <span class="card-name">Agência para a Integração, Migrações e Asilo</span>
+      <span class="card-role">Replaced SEF (dissolved Oct 2023) for immigration and asylum — now handles border management and migrant protection. HT investigative remit transferred to PJ. Airport screening responsibility transferred to PSP. AIMA feeds intelligence to PJ on potential HT victims</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">immigration</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.sis.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SIS</span>
+      <span class="card-name">Serviço de Informações de Segurança</span>
+      <span class="card-role">Domestic intelligence service — OC with state security or terrorism dimension. Pre-investigative intelligence feeds to PJ. Operates under SIRP (intelligence system) oversight distinct from law enforcement</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.at.gov.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">AT / Alfândegas</span>
+      <span class="card-name">Autoridade Tributária e Aduaneira — Customs</span>
+      <span class="card-role">Tax and customs authority — drug interdiction at ports (Lisbon, Sines, Leixões, Setúbal), financial crime, illicit tobacco and money laundering. Works with PJ and MAOC-N on container-level cocaine seizures</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.uif.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UIF</span>
+      <span class="card-name">Unidade de Informação Financeira (within PJ)</span>
+      <span class="card-role">Portugal's Financial Intelligence Unit — receives and analyses suspicious transaction reports linked to money laundering and OC. Embedded within PJ; feeds intelligence to DIAP and cooperates with Egmont Group (international FIU network)</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.sicad.pt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SICAD</span>
+      <span class="card-name">Serviço de Intervenção nos Comportamentos Aditivos e nas Dependências</span>
+      <span class="card-role">Drug addiction and behaviour intervention service — coordinates the policy side of Portugal's famous drug decriminalisation model. Works alongside PJ on demand-reduction; provides data on drug use trends relevant to trafficking investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">policy</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.emcdda.europa.eu" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">EMCDDA / EUDA (Lisbon)</span>
+      <span class="card-name">European Union Drugs Agency — headquartered in Lisbon</span>
+      <span class="card-role">EU drug monitoring and analysis centre (rebranded EUDA 2024) — based in Lisbon, provides EU-wide drug trafficking intelligence and trend data. Collaborates with PJ, MAOC-N and Europol on drug market analysis</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">EU intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by PJ criminal investigation units — link analysis, network mapping and timeline charting for OC and drug trafficking cases. Shared with Europol and MAOC-N partners on joint operations</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIIC / SIS II / PIIC</strong>
+      <span>PJ's integrated criminal intelligence system (SIIC); EU Schengen Information System (SIS II); Police Information and Intelligence Platform (PIIC) shared across PJ, GNR and PSP for domestic intelligence sharing</span>
+    </div>
+    <div class="tool-item">
+      <strong>MAOC-N maritime fusion</strong>
+      <span>Unique to Portugal — MAOC-N fuses naval, coastguard, DEA and national law enforcement intelligence in real time for Atlantic drug interdiction. PJ officers embedded alongside military and customs from 9 nations</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. SEF (Serviço de Estrangeiros e Fronteiras) was dissolved October 2023; HT investigative responsibility transferred to PJ, immigration to AIMA, and airport screening to PSP. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

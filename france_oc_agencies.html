@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>France — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px; display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .new-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #27500A; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+  .tag-new  { background: #D6ECD2; color: #1A4A10; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-pj    .card-abbr { color: #993C1D; }
+  .tier-gend  .card-abbr { color: #1B6B3A; }
+  .tier-cust  .card-abbr { color: #854F0B; }
+  .tier-prox  .card-abbr { color: #555; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem; display: flex;
+    align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>France — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). France has a dual-track system: the Police Nationale covers urban areas; the Gendarmerie Nationale covers rural areas and borders — both have specialist OC units.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+  <span class="legend-item"><span class="new-badge">new</span> Created by 2025 Narcotrafficking Law</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">France is a key contributor to EMPACT operations; Gendarmerie and Police nationale both second staff to The Hague</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">France's national member coordinates cross-border prosecutions; regular partner in JITs with Germany, Spain, Belgium</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL (HQ: Lyon)</span>
+      <span class="card-name">International Criminal Police Organization — General Secretariat, Lyon</span>
+      <span class="card-role">INTERPOL's global HQ is based in Lyon, France. NCB Paris sits within the DNPJ and handles all red notices, diffusions and cross-border requests</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL MINISTRIES -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Ministerial level — policy &amp; oversight
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Gouvernement</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/ministere-de-l-interieur/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Ministère de l'Intérieur</span>
+      <span class="card-name">Ministry of the Interior and Overseas Territories</span>
+      <span class="card-role">Oversees both Police nationale and Gendarmerie nationale — all OC, drugs and HT policy and operational oversight</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.justice.gouv.fr" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Ministère de la Justice</span>
+      <span class="card-name">Ministry of Justice</span>
+      <span class="card-role">Oversees prosecution authorities including the Parquet national anti-criminalité organisée (PNACO) and JIRS courts</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://fr.linkedin.com/company/direction-des-affaires-criminelles-et-des-graces" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DACG</span>
+      <span class="card-name">Direction des Affaires Criminelles et des Grâces</span>
+      <span class="card-role">Directorate of Criminal Affairs &amp; Pardons — sets national criminal prosecution policy, coordinates JIRS and PNACO</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NEW: PNACO + JUNALCO -->
+<div class="section tier-pj">
+  <div class="section-label">
+    New specialist prosecution bodies (2025 Narcotrafficking Law)
+    <span class="tier-badge" style="background:#D6ECD2;color:#1A4A10;">Loi narco 2025</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.justice.gouv.fr/organisation/parquet-national-anti-criminalite-organisee" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PNACO</span>
+      <span class="card-name">Parquet National Anti-Criminalité Organisée</span>
+      <span class="card-role">Created April 2025 — national specialised prosecutor for high-level OC and drug cases. Modelled on the anti-terrorism prosecutor's office (PNAT). Based in Paris with nationwide jurisdiction.</span>
+      <div class="card-tags">
+        <span class="tag tag-new">new 2025</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.justice.gouv.fr/organisation/juridictions-specialisees/junalco" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">JUNALCO</span>
+      <span class="card-name">Juridiction Nationale chargée de la Lutte contre la Criminalité Organisée</span>
+      <span class="card-role">National jurisdiction for organised crime — specialised court handling the most complex OC and drug trafficking cases; coordinates with JIRS network regionally</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLICE NATIONALE — DNPJ -->
+<div class="section tier-pj">
+  <div class="section-label">
+    Police Nationale — Direction Nationale de la Police Judiciaire (DNPJ)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Police nationale</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/police-nationale" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Police Nationale / DNPJ</span>
+      <span class="card-name">Direction Nationale de la Police Judiciaire</span>
+      <span class="card-role">National judicial police directorate — primary criminal investigation authority for urban France. Houses OCLCO, OCRTEH, OFAST and the NCB Paris (INTERPOL liaison)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interieur.gouv.fr/Le-ministere/SDLCODS/OCLCO" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCLCO</span>
+      <span class="card-name">Office Central de Lutte contre le Crime Organisé</span>
+      <span class="card-role">Lead OC office — armed banditry, kidnapping, violent organised criminal networks. Part of SDLCODS sub-directorate within DNPJ</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interieur.gouv.fr/Le-ministere/OFAST" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OFAST</span>
+      <span class="card-name">Office Anti-Stupéfiants</span>
+      <span class="card-role">National anti-narcotics office — coordinates all drug trafficking investigations across police and gendarmerie. Leads on cocaine, heroin, synthetic drugs and dark-web supply</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interieur.gouv.fr/Le-ministere/SDLCODS/OCRTEH" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCRTEH</span>
+      <span class="card-name">Office Central pour la Répression de la Traite des Êtres Humains</span>
+      <span class="card-role">Central HT office (sex trafficking focus) — 4 operational units including a cyber surveillance unit added 2023. Led national anti-trafficking plan 2024–2027</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/dgsi-securite-interieure" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DGSI</span>
+      <span class="card-name">Direction Générale de la Sécurité Intérieure</span>
+      <span class="card-role">Domestic intelligence service — OC where it overlaps with state security, counter-espionage, foreign interference. Also holds judicial police powers</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.prefecturedepolice.interieur.gouv.fr" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Préfecture de Police de Paris</span>
+      <span class="card-name">Paris Police Prefecture — DRPJ Paris</span>
+      <span class="card-role">Regional judicial police for the Paris basin — operates independently from DNPJ; handles major OC, HT and drugs cases in the capital and Île-de-France</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GENDARMERIE NATIONALE -->
+<div class="section tier-gend">
+  <div class="section-label">
+    Gendarmerie Nationale — rural, border &amp; specialist units
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Gendarmerie</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://fr.linkedin.com/company/gendarmerie-nationale" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Gendarmerie Nationale</span>
+      <span class="card-name">National Gendarmerie — Direction Générale</span>
+      <span class="card-role">Military police with judicial powers — primary OC, drugs and HT authority in rural France, border zones and overseas territories. ~100,000 personnel</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gendarmerie.interieur.gouv.fr/notre-organisation/nos-composantes/au-niveau-central/sroc" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCLTI / SROC</span>
+      <span class="card-name">Office Central de Lutte contre le Travail Illégal / Section de Recherches sur le Crime Organisé</span>
+      <span class="card-role">Gendarmerie's OC and labour trafficking unit — handles forced labour trafficking cases and illegal employment in rural supply chains</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://fr.linkedin.com/company/uncyber-gendarmerie-nationale" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">UNCyber</span>
+      <span class="card-name">Unité Nationale Cyber — Gendarmerie Nationale</span>
+      <span class="card-role">200+ cyber gendarmes — dark-web drug markets, OC digital infrastructure, Europol EMPACT cyber operations. Housed within C3N</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">cyber</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CUSTOMS & FINANCIAL INTELLIGENCE -->
+<div class="section tier-cust">
+  <div class="section-label">
+    Customs &amp; financial intelligence
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Douanes &amp; Finances</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://fr.linkedin.com/company/direction-generale-des-douanes-et-droits-indirects" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DGDDI</span>
+      <span class="card-name">Direction Générale des Douanes et Droits Indirects</span>
+      <span class="card-role">French Customs — drug interception at ports (Le Havre, Marseille, Roissy), border seizures, anti-smuggling operations. Works closely with OFAST</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/direction-nationale-du-renseignement-et-des-enqu%C3%AAtes-douani%C3%A8res" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DNRED</span>
+      <span class="card-name">Direction Nationale du Renseignement et des Enquêtes Douanières</span>
+      <span class="card-role">Customs intelligence service — first-circle intelligence agency; leads on maritime drug trafficking, counter-narcotics operations at sea with Marine Nationale</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/tracfin" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">TRACFIN</span>
+      <span class="card-name">Traitement du Renseignement et Action contre les Circuits Financiers clandestins</span>
+      <span class="card-role">Financial intelligence unit (FIU) — receives suspicious transaction reports, feeds intelligence to judicial authorities and law enforcement on OC money laundering</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- REGIONAL / SPECIALIST COURTS -->
+<div class="section tier-prox">
+  <div class="section-label">
+    Regional specialist courts &amp; jurisdictions
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.justice.gouv.fr/organisation/juridictions-specialisees/jirs" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">JIRS (8 regional courts)</span>
+      <span class="card-name">Juridictions Inter-Régionales Spécialisées</span>
+      <span class="card-role">8 inter-regional specialised OC courts (Paris, Lyon, Marseille, Bordeaux, Lille, Rennes, Nancy, Fort-de-France). Handle complex organised crime, drugs and HT cases regionally</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interieur.gouv.fr/Le-ministere/SDLCODS/OFMIN" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OFMIN</span>
+      <span class="card-name">Office des Mineurs</span>
+      <span class="card-role">Office for minors — investigates online child sexual exploitation, online trafficking networks, dark-web CSAM. Added cyber surveillance unit 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">cyber</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by DNPJ units (OCLCO, OCRTEH, OFAST) and Gendarmerie investigative sections for network mapping, link analysis and timeline reconstruction</span>
+    </div>
+    <div class="tool-item">
+      <strong>LRPPN / TAJ / FPR</strong>
+      <span>French national police databases — LRPPN (judicial processing), TAJ (criminal records), FPR (wanted persons). Shared across Police nationale and Gendarmerie</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIS II / SIRENE / EncroChat</strong>
+      <span>EU Schengen lookups via SIS II; SIRENE bureau at DNPJ. EncroChat intercepts (2020 takedown) have fed major French OC prosecutions — analysed via i2</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. PNACO and associated structures created by the Loi narcotraffic adopted 1 April 2025 — some pages still being established. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

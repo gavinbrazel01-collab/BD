@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scotland — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+  .tag-cyber{ background: #E0F2F1; color: #004D40; }
+  .tag-env  { background: #F3E5F5; color: #4A148C; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-scot  .card-abbr { color: #1B4A8A; }
+  .tier-scd   .card-abbr { color: #993C1D; }
+  .tier-partner .card-abbr { color: #854F0B; }
+  .tier-oversight .card-abbr { color: #444441; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Scotland — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). Scotland has a distinct legal system and devolved justice structure. Police Scotland's Specialist Crime Division (SCD) is the single national investigative body — there are no Scottish ROCUs. The NCA operates in Scotland but requires consent from the Lord Advocate or Scottish Ministers for certain powers.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; UK-wide level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">Scotland cooperates via NCA and the post-Brexit UK–Europol agreement. Op Pepperoni (EncroChat) led to the arrest of major Scottish SOC nominals including Thomas Stevenson</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Scotland's INTERPOL access is routed through the UK NCB (hosted within NCA). Red notices and cross-border intelligence sharing for SOC fugitives</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/national-crime-agency" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCA (Scotland)</span>
+      <span class="card-name">National Crime Agency — Scotland presence</span>
+      <span class="card-role">NCA operates in Scotland but requires Lord Advocate or Scottish Minister consent for certain powers. Works closely with SCD on highest-harm SOC cases and joint operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SCOTTISH GOVERNMENT / OVERSIGHT -->
+<div class="section tier-scot">
+  <div class="section-label">
+    Scottish Government — strategy &amp; ministerial oversight
+    <span class="tier-badge" style="background:#E8EFF9;color:#1B4A8A;">Holyrood</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/thescottishgovernment" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Scottish Government</span>
+      <span class="card-name">The Scottish Government — Justice Directorate</span>
+      <span class="card-role">Devolved justice policy, SOC strategy and funding oversight. Publishes the annual SOC Taskforce Progress Report. Jointly chairs the Serious Organised Crime Taskforce with COPFS and Police Scotland</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/scottish-police-authority" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">SPA</span>
+      <span class="card-name">Scottish Police Authority</span>
+      <span class="card-role">Holds Police Scotland to account, maintains the service and oversees Forensic Services Scotland. Scrutinises covert policing activity and SCD operations including organised crime</span>
+      <div class="card-tags">
+        <span class="tag tag-int">oversight</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gov.scot/groups/serious-organised-crime-taskforce/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SOC Taskforce</span>
+      <span class="card-name">Serious Organised Crime Taskforce</span>
+      <span class="card-role">Scotland's cross-agency coordination body — chaired by Scottish Government, includes Police Scotland, COPFS, HMRC, SPA, SEPA and others. Publishes annual progress reports</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">multi-agency</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- COPFS -->
+<div class="section tier-scot">
+  <div class="section-label">
+    Crown Office &amp; Procurator Fiscal Service — prosecution
+    <span class="tier-badge" style="background:#E8EFF9;color:#1B4A8A;">Prosecution</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/crown-office-and-procurator-fiscal-service" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">COPFS</span>
+      <span class="card-name">Crown Office and Procurator Fiscal Service</span>
+      <span class="card-role">Scotland's prosecution service and death investigation authority. Directs all Police Scotland OC investigations — functionally equivalent to the CPS in England but with greater investigative direction powers. Lord Advocate is Scotland's senior law officer</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.copfs.gov.uk/about-copfs/specialist-casework-divisions/proceeds-of-crime/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">COPFS — CRU</span>
+      <span class="card-name">Civil Recovery Unit (within COPFS)</span>
+      <span class="card-role">Non-conviction based asset recovery — investigates and recovers criminally-obtained assets without requiring a conviction. Remitted £11m+ to Scottish Consolidated Fund in 2024–25</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">asset recovery</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLICE SCOTLAND SCD -->
+<div class="section tier-scd">
+  <div class="section-label">
+    Police Scotland — Specialist Crime Division (SCD)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Police Scotland</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/police-scotland" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Police Scotland / SCD</span>
+      <span class="card-name">Police Scotland — Specialist Crime Division</span>
+      <span class="card-role">Scotland's single national force — formed 2013 from 8 regional forces + SCDEA. SCD has 2,000+ officers covering OC, counter-terrorism, intelligence, public protection and major crime. HQ at Tulliallan, Fife</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/organised-crime/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — SOC Unit</span>
+      <span class="card-name">Serious and Organised Crime Unit (within SCD)</span>
+      <span class="card-role">Primary SOC investigative unit — targets the highest-harm organised crime groups (OCGs) in Scotland. Runs county lines enforcement, drug network disruption and large-scale warrant operations (370kg drugs, £1m+ cash seized 2024–25)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/public-protection/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — Public Protection</span>
+      <span class="card-name">Public Protection Unit (within SCD)</span>
+      <span class="card-role">Human trafficking and exploitation investigations under the Human Trafficking &amp; Exploitation (Scotland) Act 2015. 14 Albanian nationals recovered from cattle truck at Loch Ryan 2024; 6 arrested in HT operation Dec 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/intelligence/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — Intelligence</span>
+      <span class="card-name">SCD Intelligence Support</span>
+      <span class="card-role">National intelligence function — covert policing authorities, RIPSA/RIPA authorisation, analytical support for all SOC investigations. Five Detective Superintendents as Force Authorising Officers</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/cybercrime/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — Cybercrime</span>
+      <span class="card-name">Cybercrime Unit (within SCD)</span>
+      <span class="card-role">Dark-web drug markets, cyber-enabled OC, EncroChat/Sky ECC data exploitation. Hosted the first International Cyber Symposium with FBI, NCA, and international partners during Cyber Scotland Week</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/major-investigation-teams/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — MITs</span>
+      <span class="card-name">Major Investigation Teams (MITs)</span>
+      <span class="card-role">Located across Scotland — lead all murder and complex crime investigations, including OC-related homicides and serious violence. Deployable nationally</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">major crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PARTNER AGENCIES -->
+<div class="section tier-partner">
+  <div class="section-label">
+    Partner &amp; specialist agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Multi-agency</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/hmrc" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">HMRC Scotland</span>
+      <span class="card-name">HM Revenue &amp; Customs — Scotland</span>
+      <span class="card-role">Illicit tobacco, tax fraud and money laundering linked to SOC. Sits on SOC Taskforce. Runs Op CeCe (illicit tobacco, NL Council Trading Standards &amp; Police Scotland). Forensic accountancy for asset recovery alongside COPFS CRU</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.sepa.org.uk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SEPA</span>
+      <span class="card-name">Scottish Environment Protection Agency</span>
+      <span class="card-role">Environmental crime linked to SOC — waste crime, illegal dumping and site operations run by OCGs. SOC Taskforce member. Refers cases to COPFS for prosecution</span>
+      <div class="card-tags">
+        <span class="tag tag-env">environmental crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/national-cyber-security-centre/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCSC</span>
+      <span class="card-name">National Cyber Security Centre (GCHQ)</span>
+      <span class="card-role">Provides technical cyber threat intelligence to SCD Cybercrime Unit. Scotland's public sector and critical infrastructure cyber resilience. Supports Police Scotland on OC digital infrastructure</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/border-policing/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SCD — Border Policing</span>
+      <span class="card-name">Border Policing Command (Scotland)</span>
+      <span class="card-role">Covers Scottish airports (Glasgow, Edinburgh, Aberdeen, Inverness) and Loch Ryan Seaport. Terrorism Act 2000 examination powers. Intercepts drugs, HT victims and SOC subjects at entry/exit points</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.scotland.police.uk/about-us/what-we-do/specialist-crime-division/national-anti-corruption-unit/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NACU</span>
+      <span class="card-name">National Anti-Corruption Unit (within SCD)</span>
+      <span class="card-role">First of its kind in UK policing — investigates corruption in publicly-funded organisations and SOC links to corrupt public officials. Works with COPFS and Scottish Government</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">anti-corruption</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.spa.police.uk/forensic-services/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SPA Forensic Services</span>
+      <span class="card-name">Forensic Services Scotland (managed by SPA)</span>
+      <span class="card-role">National forensic science provider — drug analysis, digital forensics, crime scene examination supporting SCD SOC and HT investigations. Unique in UK: only national forensic service under police authority governance</span>
+      <div class="card-tags">
+        <span class="tag tag-int">forensics</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- OVERSIGHT -->
+<div class="section tier-oversight">
+  <div class="section-label">
+    Independent oversight
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://uk.linkedin.com/company/hmics" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">HMICS</span>
+      <span class="card-name">HM Inspectorate of Constabulary in Scotland</span>
+      <span class="card-role">Independent scrutiny of Police Scotland and SPA — inspects state, effectiveness and efficiency. Annual covert policing inspections cover SCD intelligence and SOC operations</span>
+      <div class="card-tags">
+        <span class="tag tag-int">oversight</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/pircscotland" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PIRC</span>
+      <span class="card-name">Police Investigations &amp; Review Commissioner</span>
+      <span class="card-role">Independently investigates serious incidents involving police and reviews complaint handling. Oversight of SCD operations and covert policing conduct in SOC investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-int">oversight</span>
+        <span class="tag tag-int">complaints</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across Scottish agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by SCD SOC Unit, Intelligence Support and MITs — link analysis, timeline mapping and entity network charting for OC case work, shared with NCA on joint operations</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC (Op Pepperoni)</strong>
+      <span>EncroChat intercepts led directly to Op Pepperoni and the arrest of Thomas Stevenson, one of Scotland's highest-ranked SOC nominals. Data continues to fuel live Scottish prosecutions</span>
+    </div>
+    <div class="tool-item">
+      <strong>STORM / PNC / LEDS</strong>
+      <span>STORM (command &amp; control), Police National Computer and Law Enforcement Data Service (LEDS) for national intelligence. SPA Forensic Services provides digital forensics support to all SCD units</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Scotland has a distinct legal system from England &amp; Wales; NCA powers in Scotland require Lord Advocate / Scottish Minister consent under the Crime and Courts Act 2013. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

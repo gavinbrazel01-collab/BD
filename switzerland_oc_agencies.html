@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switzerland — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-cant  { background: #F3E5F5; color: #4A148C; }
+  .tag-new   { background: #D6ECD2; color: #1A4A10; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-fedpol .card-abbr { color: #993C1D; }
+  .tier-cant  .card-abbr { color: #4A148C; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Switzerland — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). Switzerland has no national police force. Responsibility for policing lies with the 26 cantons. fedpol coordinates at federal level and investigates cases with international or inter-cantonal scope. A national OC strategy is being developed by end of 2026 — fedpol director Eva Wildi-Cortés has called OC her "priority", warning "the mafia is on our streets."</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; Schengen level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">Switzerland–Europol cooperation agreement signed 2006 — Switzerland has 4 fedpol police attachés plus 1 BAZG attaché embedded at Europol The Hague. Active in EMPACT operations; Europol assisted fedpol and Geneva cantonal police in the 2024 Geneva parcel bomb investigation</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Switzerland cooperates with Eurojust under a bilateral agreement — the Bundesanwaltschaft (OAG) is the primary contact for joint investigation teams on cross-border OC cases involving EU member states</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL (NCB Bern)</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Switzerland's NCB is fedpol itself — founding INTERPOL member since 1923. One liaison officer at INTERPOL Lyon HQ. Talks with Colombia on intensified cooperation at 93rd General Assembly, Marrakesh, November 2025 (fedpol deputy director Simon Spörri led)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL LEVEL -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Federal level — justice, prosecution &amp; customs
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Bundesebene</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.ejpd.admin.ch/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">EJPD / DFJP</span>
+      <span class="card-name">Eidgenössisches Justiz- und Polizeidepartement</span>
+      <span class="card-role">Federal Department of Justice and Police — governs fedpol, the Bundesanwaltschaft and the federal courts. Oversees national OC strategy development (due end 2026). Federally responsible for extradition and mutual legal assistance</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/office-of-the-attorney-general-of-switzerland-oag" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BA / OAG</span>
+      <span class="card-name">Bundesanwaltschaft / Office of the Attorney General of Switzerland</span>
+      <span class="card-role">Federal prosecution authority — investigates and prosecutes federal-level OC, terrorism, money laundering and corruption. Directs fedpol on federal investigations. Active on economic crime, international corruption and organised crime with cross-cantonal/international scope</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bazg.admin.ch/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">BAZG</span>
+      <span class="card-name">Bundesamt für Zoll und Grenzsicherheit (Federal Customs and Border Security)</span>
+      <span class="card-role">Customs and border enforcement — drug interdiction at 8 border regions, financial crime, smuggling. Has one liaison officer embedded at Europol The Hague alongside fedpol. Works with cantonal police on cross-border OC cases at Swiss borders</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDPOL -->
+<div class="section tier-fedpol">
+  <div class="section-label">
+    fedpol — Federal Office of Police
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">fedpol</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/fedpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">fedpol</span>
+      <span class="card-name">Federal Office of Police / Bundespolizei</span>
+      <span class="card-role">Switzerland's federal police authority — not a superordinate body but a coordination, intelligence and investigation hub. Investigates complex OC, terrorism and money laundering on behalf of the OAG. Houses NCB Bern (INTERPOL), Europol liaison, MROS and FSMM. 2025 Annual Report: 20,000+ SAR reports, national OC strategy planned for 2026</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fedpol.admin.ch/en/money-laundering-reporting-office" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MROS</span>
+      <span class="card-name">Money Laundering Reporting Office Switzerland (within fedpol)</span>
+      <span class="card-role">Switzerland's Financial Intelligence Unit — receives and analyses suspicious activity reports from financial intermediaries. 20,000+ SARs processed in 2025 relating to money laundering, terrorism financing and criminal funds. Member of Egmont Group. Feeds intelligence to OAG and cantonal prosecutors</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fedpol.admin.ch/en/human-trafficking" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">FSMM</span>
+      <span class="card-name">Fachstelle Menschenhandel und Menschenschmuggel (within fedpol)</span>
+      <span class="card-role">Specialist unit against human trafficking and migrant smuggling — coordinates national anti-HT policy across 26 cantons, runs the National Expert Group and cantonal roundtables. Launched 2024 Financial Intelligence against HT project with international partner. 2023–2027 NAP coordination body</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">coordination</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fedpol.admin.ch/en/bkp" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">BKP</span>
+      <span class="card-name">Bundeskriminalpolizei — Federal Criminal Police (within fedpol)</span>
+      <span class="card-role">fedpol's investigative arm — conducts complex OC, terrorism, corruption and money laundering investigations on behalf of the OAG. Operates Task Force TIGRIS (covert operations unit, existence only acknowledged 2009). Crypto-tracking tools used in 2025 Geneva watchmaking extortion case</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fedpol.admin.ch/en/ndb" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NDB</span>
+      <span class="card-name">Nachrichtendienst des Bundes — Federal Intelligence Service</span>
+      <span class="card-role">Domestic and foreign intelligence service — OC threat level for Switzerland raised from level 3 to level 5 (of 6) by NDB in 2024–25. Provides strategic intelligence on Italian mafia, Albanian, Balkan, Turkish and Moroccan OC networks active in Switzerland</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fedpol.admin.ch/en/cybercrime" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">fedpol — Cybercrime</span>
+      <span class="card-name">Cybercrime / Digital Forensics (within fedpol BKP)</span>
+      <span class="card-role">Cryptocurrency transaction tracking (used in 2025 Geneva watchmaking bomb case), dark-web OC investigations, digital forensics for OAG federal cases. Sky ECC country package from Europol led to cantonal prosecutions from 2023 onwards</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CANTONAL POLICE -->
+<div class="section tier-cant">
+  <div class="section-label">
+    Cantonal police — primary OC investigators (26 cantons)
+    <span class="tier-badge" style="background:#F3E5F5;color:#4A148C;">Kantonspolizei</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/kantonspolizei-z%C3%BCrich" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Kantonspolizei Zürich</span>
+      <span class="card-name">Cantonal Police of Zurich (KAPO ZH)</span>
+      <span class="card-role">Largest cantonal police force — Kripo (criminal investigation) handles OC, drugs and HT. Zürich is Switzerland's primary OC hub: Italian mafia money laundering, Albanian clan networks, crypto crime. Key Sky ECC data exploiter since 2023. Airport Zurich OC interdiction</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-cant">Kanton ZH</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.ge.ch" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Police cantonale Genève</span>
+      <span class="card-name">Geneva Cantonal Police</span>
+      <span class="card-role">Geneva is Switzerland's most internationally exposed OC environment — diplomatic community, private banking, luxury goods. Joint task force with fedpol following 2024 watchmaking sector bomb/extortion attacks. Francophone OC networks and international money laundering focus</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-cant">Kanton GE</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.kapo.be.ch" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Kantonspolizei Bern</span>
+      <span class="card-name">Bern Cantonal Police</span>
+      <span class="card-role">Capital canton — hosts fedpol headquarters. Kripo Bern investigates OC and serious crime; coordinates closely with fedpol on federal-level investigations. WEF (Davos) policing managed via Graubünden cantonal police with Zürich and Bern support</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cant">Kanton BE</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/kantonspolizei-st.gallen" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Kantonspolizei St. Gallen</span>
+      <span class="card-name">Cantonal Police of St. Gallen</span>
+      <span class="card-role">Eastern Switzerland — border with Austria and Liechtenstein. OC and drug trafficking along the Rhine corridor; cybercrime analytical team (Lage- und Nachrichtenzentrum). Active Sky ECC case work from 2023</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-cant">Kanton SG</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.vd.ch" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Police cantonale Vaud</span>
+      <span class="card-name">Vaud Cantonal Police (Lausanne)</span>
+      <span class="card-role">French-speaking Switzerland's largest cantonal police — OC, drug trafficking and HT in the Lausanne-Geneva corridor. Has a specialist brigade de criminalité organisée. Lausanne is significant for luxury goods crime and OC financial activity</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-cant">Kanton VD</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/policefribourg-polizeifreiburg/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Police cantonale Fribourg</span>
+      <span class="card-name">Fribourg Cantonal Police (bilingual FR/DE)</span>
+      <span class="card-role">Bilingual Fribourg — investigates OC and drug trafficking on routes between Bern and the Romandy. Cross-cantonal treaty policing on HT; active inter-cantonal cooperation via CCPCS. Representative of smaller bilingual canton OC capacity</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cant">Kanton FR</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- COORDINATION & SPECIALIST -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Inter-cantonal coordination &amp; specialist agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Koordination</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.kkpks.ch/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CCPCS / KKPKS</span>
+      <span class="card-name">Conference of Cantonal Police Commanders of Switzerland</span>
+      <span class="card-role">Key partner for fedpol — coordinates inter-cantonal OC investigations, harmonises police doctrine and establishes national-level common strategies. The primary body managing cross-cantonal treaty policing including on HT and drug trafficking</span>
+      <div class="card-tags">
+        <span class="tag tag-int">coordination</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bundesverwaltung" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Swiss Federal Administration</span>
+      <span class="card-name">Schweizerische Bundesverwaltung — Federal Administration</span>
+      <span class="card-role">The umbrella Swiss federal administration including fedpol, OAG, BAZG and NDB. Senate allocated CHF1m additional budget to fedpol in 2026 budget plus CHF26m to cyber security — direct response to rising OC threat level assessment</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.finma.ch/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">FINMA</span>
+      <span class="card-name">Eidgenössische Finanzmarktaufsicht — Swiss Financial Market Supervisory Authority</span>
+      <span class="card-role">Financial market regulator — enforces AML compliance across Swiss banking sector. Works with MROS and OAG on financial crime linked to OC money laundering. Switzerland's financial centre makes FINMA a critical OC financial intelligence partner</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">regulation</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>Cryptocurrency tracking tools</strong>
+      <span>fedpol BKP used modern analytical tools to track cryptocurrency transactions as a "key" element in the 2025 Geneva watchmaking extortion case — cited in the 2025 Annual Report as a primary new investigative method</span>
+    </div>
+    <div class="tool-item">
+      <strong>Sky ECC / Europol country packages</strong>
+      <span>Europol provided Switzerland a Sky ECC "country package" leading to intensive data analysis by fedpol and cantonal police forces, with first cantonal criminal court proceedings in 2023 and ongoing federal investigations</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIS II / JANUS / IPAS</strong>
+      <span>Switzerland participates fully in Schengen Information System (SIS II) with thousands of searches annually. JANUS is fedpol's national police information system; IPAS handles biometric data. No national i2 Analyst's Notebook confirmation — cantonal forces use varied analytical tools</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Switzerland has no national police force; cantons retain primary jurisdiction except for cases involving organised criminal networks, which fall under fedpol/federal jurisdiction. A national OC strategy is being developed by end 2026 (fedpol director Eva Wildi-Cortés). Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

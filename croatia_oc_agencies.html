@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croatia — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-bal   { background: #FCE8E8; color: #7A1515; }
+  .tag-bord  { background: #FFF8E1; color: #6D4C00; }
+  .tag-cor   { background: #F3E5F5; color: #4A148C; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-police .card-abbr { color: #993C1D; }
+  .tier-pros  .card-abbr { color: #1B6B3A; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  .note-box {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    background: #FFF8E1; border-radius: 10px; border: 0.5px solid #E8D5A0;
+    padding: 12px 16px; font-size: 12px; color: #5a4500; line-height: 1.55;
+  }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Croatia — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's official website. Croatia occupies a critical position on the Balkan route — a primary corridor for drug trafficking, human trafficking and arms smuggling between South-East Europe and Western Europe. USKOK (specialist OC prosecution) and PNUSKOK (specialist OC police) form the twin-track system that leads all serious organised crime, corruption and trafficking cases.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<div class="note-box">
+  ⚠️ <strong>LinkedIn note:</strong> Croatian law enforcement, prosecution and intelligence agencies do not maintain official LinkedIn company pages. All tiles link to official government websites. Only international bodies (Europol, Eurojust, INTERPOL) have confirmed LinkedIn pages.
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">PNUSKOK and SOA represent Croatia in EMPACT operations. Sky ECC data shared with Croatia contributed to the April 2025 operation arresting 45 drug-smuggling gang members. Croatia participates in Europol joint actions on Balkan route OC, vehicle crime and HT</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Croatia's national member coordinates JITs with EU partners — USKOK is the primary Croatian contact for Eurojust on complex OC and drug trafficking prosecutions with cross-border dimension. Active on cocaine supply chain cases linking Croatian and Serbian OC figures</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL (NCB Zagreb)</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Croatia's NCB is housed within the MUP (Ministry of the Interior) in Zagreb. Manages red notices, diffusions and cross-border intelligence on Balkan OC fugitives. Active on international warrants for Croatian OCG members operating in Germany, Austria, Italy and Switzerland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MINISTERIAL -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Ministerial &amp; government level
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Vlada</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://mup.gov.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MUP</span>
+      <span class="card-name">Ministarstvo unutarnjih poslova — Ministry of the Interior</span>
+      <span class="card-role">Ministerial oversight of Policija and all Croatian police forces. Sets national OC, drugs and HT strategy. Coordinates the inter-ministerial anti-trafficking committee. Adopted 2024–2030 NAP on combating HT in October 2024 with €262,170 allocated for 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://pravosudje.gov.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MPS</span>
+      <span class="card-name">Ministarstvo pravosuđa i uprave — Ministry of Justice and Public Administration</span>
+      <span class="card-role">Oversight of courts, USKOK and prosecution authorities. Ongoing judicial reform programme — only a quarter of Croatian citizens view judicial independence positively (surveys 2024). Manages cooperation with Eurojust and mutual legal assistance on OC prosecutions</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-cor">anti-corruption</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- USKOK / PROSECUTION -->
+<div class="section tier-pros">
+  <div class="section-label">
+    USKOK &amp; prosecution — the specialist OC prosecution system
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Tužiteljstvo</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://uskok.dorh.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">USKOK</span>
+      <span class="card-name">Ured za suzbijanje korupcije i organiziranog kriminaliteta — Office for the Suppression of Corruption and Organised Crime</span>
+      <span class="card-role">Croatia's specialist OC and anti-corruption prosecutor — formed 2001, headquartered Zagreb with nationwide jurisdiction. Prosecutes all major OC, drug trafficking, HT and corruption cases. Charges are filed with USKOK after PNUSKOK investigations complete. Sky ECC-driven drug gang prosecutions ongoing from April 2025 operation. Named a "bacro-nym" from Uskoci — Croatian guerrilla fighters against the Ottomans</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cor">anti-corruption</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.dorh.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ŽDO / DORH</span>
+      <span class="card-name">Državno odvjetništvo RH — State Attorney's Office</span>
+      <span class="card-role">General prosecution authority — 15 county State Attorney's offices prosecuting standard OC and drug cases below USKOK threshold. Known gap: prosecutors sometimes charge traffickers with lesser offences (pandering, assault) to clear backlogs rather than full HT charges. GRETA and US TIP Report flag this consistently</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLICE -->
+<div class="section tier-police">
+  <div class="section-label">
+    Policija — General Police Directorate &amp; specialist units
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Policija</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://policija.gov.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Policija / GPU</span>
+      <span class="card-name">Hrvatska policija — Ravnateljstvo policije (General Police Directorate)</span>
+      <span class="card-role">Croatia's national police force — 23 county police administrations plus national specialist units. Criminal Police Directorate (UKP) leads all OC investigations below PNUSKOK level. At least 10 significant organised crime groups operate in Croatia. Schengen Area member since January 2023</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policija.gov.hr/o-policiji/ustrojstvo/ravnateljstvo-policije/nacionalni-ured-za-suzbijanje-korupcije-i-organiziranog-kriminaliteta-pnuskok/1727" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PNUSKOK</span>
+      <span class="card-name">Policijski nacionalni ured za suzbijanje korupcije i organiziranog kriminaliteta</span>
+      <span class="card-role">Police counterpart to USKOK — the specialist national OC and anti-corruption police unit within GPU. Conducts proactive OC investigations, files charges with USKOK. Led April 2025 operation (45 arrests, drug-smuggling gangs, Sky ECC evidence). Designated officers for HT in every district. Joint inspections with State Labour Inspectorate — 132 employers inspected in 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cor">anti-corruption</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policija.gov.hr/o-policiji/ustrojstvo/ravnateljstvo-policije/uprava-kriminalisti%C4%8Dke-policije/1697" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UKP</span>
+      <span class="card-name">Uprava kriminalističke policije — Criminal Police Directorate</span>
+      <span class="card-role">National criminal investigation directorate — contains PNUSKOK, cybercrime unit, financial crime unit and specialist HT investigators. Manages INTERPOL NCB Zagreb. Oversees criminal investigation across all 23 county police administrations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policija.gov.hr/o-policiji/ustrojstvo/ravnateljstvo-policije/uprava-kriminalisti%C4%8Dke-policije/odjel-za-kiberneticki-kriminalitet/2580" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UKP — Cybercrime</span>
+      <span class="card-name">Cybercrime Division (within UKP)</span>
+      <span class="card-role">Investigates cyber-enabled OC — dark-web drug markets, online HT recruitment (traffickers increasingly use social media and online platforms), financial fraud and counterfeit currency. Russia and China-linked cyber actors have also targeted Croatian government systems</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policija.gov.hr/granicna-policija/1774" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Granična policija</span>
+      <span class="card-name">Border Police — Uprava za granicu</span>
+      <span class="card-role">External Schengen border management since January 2023 — Croatia's land, sea and air borders are now the EU's external frontier with Bosnia, Serbia and Montenegro. Primary interception point for Balkan route migrants, HT victims and drug trafficking. Port of Ploče is a key cocaine entry point</span>
+      <div class="card-tags">
+        <span class="tag tag-bord">border / Schengen</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policija.gov.hr/o-policiji/ustrojstvo/ravnateljstvo-policije/uprava-kriminalisti%C4%8Dke-policije/sektor-za-financijsko-forenzicna-istrazivanja/1706" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UKP — Financial Forensics</span>
+      <span class="card-name">Financial Forensic Investigation Sector (within UKP)</span>
+      <span class="card-role">Money laundering, asset tracing and financial crime linked to OC. OC groups exploit shell companies, internet banking fraud and the 2023 euro adoption to launder illicit proceeds. Works with USKOK and customs on asset recovery. 2024 Health Minister dismissed after EU-led bribery investigation</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-cor">anti-corruption</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- INTELLIGENCE & SPECIALIST -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Intelligence &amp; specialist partner agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Specijalizirane agencije</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://soa.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SOA</span>
+      <span class="card-name">Sigurnosno-obavještajna agencija — Security and Intelligence Agency</span>
+      <span class="card-role">Domestic and foreign intelligence — collects information on Croatian and foreign OC groups, their members, organisation and inter-group ties. OC is explicitly listed as a core security threat on SOA's website. Croatia is at intersection of smuggling routes between Europe and Asia; SOA coordinates with PNUSKOK and Europol on strategic intelligence</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.antikorupcija.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PNUSKOK — Anti-Corruption</span>
+      <span class="card-name">Anti-Corruption Programme — PNUSKOK / USKOK</span>
+      <span class="card-role">PNUSKOK leads all corruption investigations referred to USKOK for prosecution. High-profile cases: Dinamo Zagreb executive Zdravko Mamić arrest, former PM Ivo Sanader conviction (later overturned), 2024 Health Minister EU fraud case. EU Commission commended USKOK's "impartial investigations irrespective of political affiliation" (2014 Anti-Corruption Report)</span>
+      <div class="card-tags">
+        <span class="tag tag-cor">anti-corruption</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://carina.gov.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Carinska uprava</span>
+      <span class="card-name">Croatian Customs Administration (within Ministry of Finance)</span>
+      <span class="card-role">Drug interdiction at ports (Rijeka, Split, Ploče), airports and land borders. Port of Ploče is a notable cocaine entry point — record seizure 500kg+ cocaine in 2021 in container shipping. Works with PNUSKOK on drug supply chain investigations and financial crime at borders</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-bord">border / port</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.unodc.org/unodc/en/money-laundering/overview.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UNODC / Anti-Money Laundering Office</span>
+      <span class="card-name">Ured za sprječavanje pranja novca — Anti-Money Laundering Office (Ministry of Finance)</span>
+      <span class="card-role">Croatia's Financial Intelligence Unit — receives and processes suspicious transaction reports. OC money laundering exploits shell companies, internet banking fraud and counterfeit currency (rose after euro adoption 2023). Feeds intelligence to PNUSKOK and USKOK on financial crime nexus</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://inspektorat-rada.gov.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Državni inspektorat rada</span>
+      <span class="card-name">State Labour Inspectorate</span>
+      <span class="card-role">Joint inspections with PNUSKOK — 132 employers inspected in 2024 for labour trafficking in agriculture, construction, hospitality and services. Known gap: most violations pursued as administrative labour code breaches rather than criminal HT, limiting deterrence (flagged by GRETA and US TIP Report)</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">labour enforcement</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.ohrrnm.hr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OHRRNM</span>
+      <span class="card-name">Office for Human Rights and Rights of National Minorities</span>
+      <span class="card-role">Government body coordinating national anti-trafficking policy — chairs inter-ministerial working group (10 meetings in 2024), implements 2024–2030 NAP, monitors PNUSKOK case outcomes, liaises with NGO-run shelters and victim support. Received €54,540 funding for 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">coordination</span>
+        <span class="tag tag-int">policy</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>Sky ECC / Europol country package</strong>
+      <span>Sky ECC intercept data has been central to recent PNUSKOK/USKOK operations — the April 2025 operation arresting 45 drug-smuggling gang members was substantially built on Sky ECC evidence. USKOK charges filed directly referenced Sky ECC intercepts linking Croatian and Serbian OC figures in South American cocaine supply chains</span>
+    </div>
+    <div class="tool-item">
+      <strong>Analytical tools (PNUSKOK / UKP)</strong>
+      <span>PNUSKOK and UKP use criminal intelligence analytical software for OC network mapping and financial forensics. Specific platforms are not publicly disclosed — tools are consistent with Europol-standard analytical systems. USKOK court proceedings in major OC cases reference complex analytical outputs</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIS II / Schengen / SIENA</strong>
+      <span>Full Schengen Information System access since January 2023. SIENA (Europol) used by PNUSKOK and UKP for operational intelligence sharing. INTERPOL NCB Zagreb manages all I-24/7 traffic. The Schengen accession significantly upgraded Croatia's access to real-time EU law enforcement intelligence</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — verified June 2026. Croatian law enforcement and prosecution agencies do not maintain official LinkedIn pages; all tiles link to official government websites. Croatia joined the Schengen Area in January 2023, making its borders the EU's external frontier with the Western Balkans — a significant shift in OC intelligence architecture. Tiles marked <strong>web</strong> link to official websites.
+</footer>
+
+</body>
+</html>

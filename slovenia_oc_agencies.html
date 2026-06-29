@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slovenia — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-bal   { background: #FCE8E8; color: #7A1515; }
+  .tag-bord  { background: #FFF8E1; color: #6D4C00; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-cpd   .card-abbr { color: #993C1D; }
+  .tier-pros  .card-abbr { color: #1B6B3A; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  .note-box {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    background: #FFF8E1; border-radius: 10px; border: 0.5px solid #E8D5A0;
+    padding: 12px 16px; font-size: 12px; color: #5a4500; line-height: 1.55;
+  }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Slovenia — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's official website. Slovenia is a small but strategically critical country at the crossroads of the Balkan route — a primary transit corridor for drugs, human trafficking and arms moving from the Western Balkans into Western Europe. The Criminal Police Directorate (CPD) and its National Bureau of Investigation (NPU) lead all serious OC investigations nationally.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<div class="note-box">
+  ⚠️ <strong>LinkedIn note:</strong> Slovenian law enforcement and prosecution agencies do not maintain official LinkedIn company pages. All tiles link to official government websites. Only international bodies (Europol, Eurojust, INTERPOL) have confirmed LinkedIn pages.
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">CPD and NPU represent Slovenia in EMPACT operations. Slovenia participates in Europol's Balkan Route operations and joint actions on drug trafficking, HT and vehicle crime. Apprehended fugitive Camorra leader in 2024 in a Europol-coordinated operation</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Slovenia's national member coordinates JITs on cross-border OC cases — ongoing coordination with Greece and EU on alleged 2019 Greek diplomat labour trafficking case. SDT is Slovenia's primary Eurojust contact for prosecution</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL (NCB Ljubljana)</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Slovenia's NCB is embedded within the International Police Cooperation Division (IPCD) of the Criminal Police Directorate in Ljubljana. Provides globally-sourced intelligence on Balkan route trafficking trends to all Slovenian police units</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MINISTERIAL -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Ministerial &amp; government level
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Vlada</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.gov.si/en/state-authorities/ministries/ministry-of-the-interior/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MNZ</span>
+      <span class="card-name">Ministrstvo za notranje zadeve — Ministry of the Interior</span>
+      <span class="card-role">Ministerial oversight of Policija — sets OC and security policy. Houses the national coordinator for countering trafficking in persons and the Anti-Trafficking Service Office. Leads the Interdepartmental Working Group (IWG) on HT which met 6 times in 2024 including on child and asylum-seeker victims</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gov.si/en/state-authorities/ministries/ministry-of-justice/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MDP</span>
+      <span class="card-name">Ministrstvo za pravosodje — Ministry of Justice</span>
+      <span class="card-role">Oversight of prosecution authorities and courts. Updated 2025–2026 NAP on combating human trafficking adopted January 2025. Coordinates criminal justice policy including OC legislative framework under the Criminal Code (KZ-1)</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CRIMINAL POLICE DIRECTORATE -->
+<div class="section tier-cpd">
+  <div class="section-label">
+    Policija — Criminal Police Directorate (CPD / GPU)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Policija</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/criminal-police-directorate" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CPD / GPU</span>
+      <span class="card-name">Criminal Police Directorate — Generalna policijska uprava</span>
+      <span class="card-role">Slovenia's national criminal investigation directorate — specialist criminal police at national level. Contains NPU, IPCD (NCB), specialist OC and HT units. Dismantled multiple international criminal groups trafficking drugs and human beings. Maintains police attachés in Austria, BiH, Italy, North Macedonia and Serbia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/criminal-police-directorate/national-bureau-of-investigation" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NPU</span>
+      <span class="card-name">Nacionalni preiskovalni urad — National Bureau of Investigation</span>
+      <span class="card-role">Specialist national-level unit for the most serious OC — economic and financial crime, corruption, complex drug and HT network investigations. Has solved high-profile cases: pyramid schemes, insider trading, healthcare corruption, energy sector fraud, and dismantled international drug and HT networks. Works closely with SDT</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">analytical tools</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/criminal-police-directorate/international-police-cooperation-division" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">IPCD</span>
+      <span class="card-name">International Police Cooperation Division (within CPD)</span>
+      <span class="card-role">Houses Slovenia's INTERPOL NCB — manages all international police information exchange, red notices, diffusions and liaison with Europol. Coordinates with Croatian, Austrian, Italian and Balkan counterparts on cross-border OC and Balkan route trafficking operations</span>
+      <div class="card-tags">
+        <span class="tag tag-int">international liaison</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/crime-prevention/human-trafficking" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CPD — HT Unit</span>
+      <span class="card-name">Human Trafficking Investigation Unit (within CPD)</span>
+      <span class="card-role">Investigates all HT cases under Article 113 KZ-1 (trafficking) and Article 175 (pimping / exploitation). 43 potential trafficking investigations in 2024 (up from 36 in 2023). Primary victims: Ukrainian, Romanian, Hungarian, Balkan and Dominican Republic nationals. Works with MNZ Anti-Trafficking Service Office and government-funded NGOs</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/criminal-police-directorate" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CPD — Drug Unit</span>
+      <span class="card-name">Drug Crime Investigation Unit (within CPD)</span>
+      <span class="card-role">Investigates drug trafficking networks — cocaine via Port of Koper (Balkan Cartel), cannabis, heroin and synthetic drugs. Balkan Cartel dominates cocaine and cannabis supply in Slovenia. Raids in 2023–2024 confirmed cannabis cultivation networks. Port of Koper is a key EU cocaine entry point</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-bal">Balkan Cartel</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/criminal-police-directorate" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CPD — Cybercrime</span>
+      <span class="card-name">Cybercrime Investigation Unit (within CPD)</span>
+      <span class="card-role">Investigates cyber-enabled OC — bank scams (multi-million-euro losses in 2024), online fraud, dark-web drug markets. Russia and China-linked cybercriminal groups have targeted Slovenian government agencies and financial entities. Supports NPU on financial crime digital evidence</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTION -->
+<div class="section tier-pros">
+  <div class="section-label">
+    Prosecution authorities
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Tožilstvo</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.dt-rs.si/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SDT</span>
+      <span class="card-name">Specializirano državno tožilstvo — Specialised State Prosecutor's Office</span>
+      <span class="card-role">Slovenia's specialist prosecution body for the most complex crimes — OC, serious economic crime, corruption and HT. Requires special organisation and highest-level prosecutorial efficiency. Directs NPU investigations. Initiated criminal proceedings against 11 suspected traffickers and 2 legal entities in 2024. Primary contact for Eurojust JITs</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.dt-rs.si/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ODT</span>
+      <span class="card-name">Okrožna državna tožilstva — District State Prosecutors' Offices</span>
+      <span class="card-role">11 district prosecution offices handling standard OC and drug cases at regional level. Drug cases below SDT threshold — including labour trafficking cases that are often (problematically) pursued as administrative violations rather than criminal HT. Work alongside CPD regional units</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST & PARTNER -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Specialist &amp; partner agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Partnerske agencije</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.sova.gov.si/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SOVA</span>
+      <span class="card-name">Slovenska obveščevalno-varnostna agencija — Slovenian Intelligence and Security Agency</span>
+      <span class="card-role">Domestic and foreign intelligence — OC with state security or foreign interference dimension. Provides strategic intelligence on Balkan OC networks, Russian/Chinese cybercrime threats and foreign criminal actors using Slovenia as a refuge. Feeds intelligence to CPD and NPU</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-cyber">cybercrime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.uppd.gov.si/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UPPD</span>
+      <span class="card-name">Urad za preprečevanje pranja denarja — Office for Money Laundering Prevention</span>
+      <span class="card-role">Slovenia's Financial Intelligence Unit (FIU) under the Ministry of Finance — receives and analyses suspicious transaction reports linked to OC money laundering. Member of Egmont Group. Works with NPU and SDT on financial crime cases. Participated in 2024 EU Financial Intelligence against HT project</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fu.gov.si/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">FURS</span>
+      <span class="card-name">Finančna uprava RS — Financial Administration of Slovenia</span>
+      <span class="card-role">Tax and customs authority — drug interdiction at Port of Koper and border crossings with Austria, Italy, Hungary and Croatia. Financial crime investigations supporting NPU and SDT. Seized cocaine at Port of Koper linked to the Balkan Cartel supply chain</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-bord">border / port</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policija.si/eng/about-the-police/organization/general-police-directorate/border-police-directorate" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">BPD</span>
+      <span class="card-name">Border Police Directorate — Uprava uniformirane policije</span>
+      <span class="card-role">Border management on Schengen external borders (Croatia) and internal border surveillance. Primary HT and drug interception at border crossing points. Slovenia lies directly on the Balkan route — border police are often first responders to HT victims crossing from Croatia</span>
+      <div class="card-tags">
+        <span class="tag tag-bord">border</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-bal">Balkan route</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.kpk.si/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">KPK</span>
+      <span class="card-name">Komisija za preprečevanje korupcije — Commission for the Prevention of Corruption</span>
+      <span class="card-role">Independent anti-corruption authority — integrity testing of public officials, asset declarations, lobbying oversight. OC–public corruption nexus: 2024 hospital procurement scandal and EU/Erasmus+ fund embezzlement cases referred to SDT following KPK investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">anti-corruption</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.irsd.si/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">IRSD</span>
+      <span class="card-name">Inšpektorat RS za delo — Labour Inspectorate</span>
+      <span class="card-role">Labour inspection authority — first responders for labour trafficking and forced labour, particularly in construction, transport, agriculture and hospitality. Coordination with CPD HT unit is a known gap — cases frequently pursued as administrative violations rather than criminal HT, limiting deterrence</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">labour enforcement</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>Analytical tools (NPU / CPD)</strong>
+      <span>NPU and CPD use criminal intelligence analytical software for OC network mapping and financial crime tracing. Specific commercial platforms are not publicly disclosed — tools are understood to include Europol-standard analytical systems used across EU member states</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIS II / Schengen / SIENA</strong>
+      <span>Full Schengen Information System access. SIENA (Europol's secure information exchange network) is used by CPD and NPU for Europol operational intelligence sharing. IPCD manages all SIS and Europol information flows nationally</span>
+    </div>
+    <div class="tool-item">
+      <strong>Financial intelligence (UPPD / 2024 EU project)</strong>
+      <span>In 2024 the government joined an EU-funded Financial Intelligence against Human Trafficking project — using financial analysis to optimise HT investigations. UPPD and CPD cooperate on financial tracing for HT and OC asset recovery under the Criminal Assets Act</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — verified June 2026. No Slovenian law enforcement agencies maintain official LinkedIn pages; all tiles link to official government websites. Slovenia's OC threat is dominated by the Balkan Cartel and transit-route exploitation; Port of Koper is a key intelligence focal point for cocaine entering the EU. Tiles marked <strong>web</strong> link to official websites.
+</footer>
+
+</body>
+</html>

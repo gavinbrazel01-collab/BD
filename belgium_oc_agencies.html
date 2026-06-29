@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belgium — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-djsoc .card-abbr { color: #993C1D; }
+  .tier-dist  .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Belgium — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — Belgium actively participates in EMPACT operations; Belgian NCB co-located at Federal Police HQ</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Judicial coordination for cross-border OC prosecutions — Belgian national desk supports DJSOC joint investigation teams</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interpol.int/Who-we-are/Member-countries/Europe/BELGIUM" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">INTERPOL NCB Brussels</span>
+      <span class="card-name">INTERPOL National Central Bureau — Belgium</span>
+      <span class="card-role">Part of the Federal Police's International Police Cooperation unit — global intelligence relay for drugs, HT and fugitives</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL CENTRAL DIRECTORATES -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Federal central directorates (DGJ)
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">federal</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DJSOC</span>
+      <span class="card-name">Direction centrale de la lutte contre la criminalité grave et organisée</span>
+      <span class="card-role">Lead federal OC directorate (350+ staff) — coordinates all serious and organised crime at strategic, operational and tactical levels; covers Italian Mafia, Balkan, Russian and Hells Angels networks</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/5998/fr/a-propos/police-federale/police-judiciaire-federale/direction-centrale-de-la-lutte-contre-la" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCRC</span>
+      <span class="card-name">Office central pour la répression de la corruption</span>
+      <span class="card-role">Central anti-corruption unit within DJSOC — public corruption, fraud, public procurement; liaison with CTIF (financial intelligence)</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">corruption</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/5998/fr/a-propos/police-federale/police-judiciaire-federale/direction-centrale-de-la-lutte-contre-la" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCDEFO</span>
+      <span class="card-name">Office central pour la lutte contre la délinquance économique et financière organisée</span>
+      <span class="card-role">Organised economic &amp; financial crime — EU fraud, large-scale VAT carousel fraud, complex international financial cases; 16 tax specialists from SPF Finances attached</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/5998/fr/a-propos/police-federale/police-judiciaire-federale/direction-centrale-de-la-lutte-contre-la" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">FCCU</span>
+      <span class="card-name">Federal Computer Crime Unit</span>
+      <span class="card-role">National-level cyber investigations — critical infrastructure attacks, organised ICT crime, dark-web drug markets; coordinates 12 regional RCCUs and the J-CAT at Europol</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">cyber</span>
+        <span class="tag tag-i2">digital forensics</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/annualreport-federalpolice/en/homepage/investigations" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DJO</span>
+      <span class="card-name">Direction centrale des opérations de la police judiciaire</span>
+      <span class="card-role">Manages informant network &amp; special units; houses the Fugitive Active Search Team (FAST) — 931 open cases in 2024, 105 arrests/locations incl. 44 autonomous OC operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://ctif.be/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CTIF / CFI</span>
+      <span class="card-name">Cellule de traitement des informations financières</span>
+      <span class="card-role">Financial Intelligence Unit — receives suspicious transaction reports, channels money-laundering intelligence to DJSOC, OCDEFO and OCSC; OCDEFO liaison officer permanently posted here</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- DJSOC SPECIALIST UNITS -->
+<div class="section tier-djsoc">
+  <div class="section-label">
+    DJSOC specialist units &amp; Centrex
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">within DJSOC</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.police.be/5998/fr/a-propos/police-federale/police-judiciaire-federale/direction-centrale-de-la-lutte-contre-la" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Centrex — Human trafficking</span>
+      <span class="card-name">DJSOC Centre of Expertise: Trafficking in Human Beings &amp; Smuggling</span>
+      <span class="card-role">Strategic &amp; operational expertise on THB and migrant smuggling — runs the ICP inter-departmental coordination platform; supports all 12 PJF districts</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/5998/fr/a-propos/police-federale/police-judiciaire-federale/direction-centrale-de-la-lutte-contre-la" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Centrex — Drug trafficking</span>
+      <span class="card-name">DJSOC Centre of Expertise: Drug Trafficking</span>
+      <span class="card-role">Strategic intelligence on drug supply chains; coordinates Antwerp port operations with SPN Maritime Police and Customs; feeds EMPACT drug priorities</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/annualreport-federalpolice/en/homepage/investigations" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DJSOC/i2-IRU</span>
+      <span class="card-name">Internet Referral Unit (within DJSOC, est. 2016)</span>
+      <span class="card-role">Open-source internet investigations for OC and drug trafficking; flags illegal content for takedown; support unit for all Integrated Police services and Europol IRU</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">cyber</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/annualreport-federalpolice/en/homepage/investigations" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OC Observatory</span>
+      <span class="card-name">Organized Crime Observatory (est. 2023, within PJF/FGP)</span>
+      <span class="card-role">Continuous mapping of OC threat landscape in Belgium — identifies emerging trends and criminal network structures; supplies strategic intelligence to judiciary and government</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.be/annualreport-federalpolice/en/homepage/investigations" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SPN — Port Security Corps</span>
+      <span class="card-name">Maritime &amp; River Police — Port Security Corps (70 officers, Antwerp)</span>
+      <span class="card-role">Dedicated anti-drug unit at Port of Antwerp-Bruges; 150+ drug-related arrests in Antwerp in 2023; partner to Customs for container intelligence</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://ocsc.be/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCSC</span>
+      <span class="card-name">Organe central pour la Saisie et la Confiscation</span>
+      <span class="card-role">Asset recovery agency — manages seized and confiscated criminal proceeds; OCDEFO liaison officer permanently posted here; €231M+ in OC assets identified in 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- DISTRICT-LEVEL PJF -->
+<div class="section tier-dist">
+  <div class="section-label">
+    District-level federal judicial police (PJF/FGP) — key districts
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">12 districts</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Antwerpen</span>
+      <span class="card-name">Federal Judicial Police — Antwerp District</span>
+      <span class="card-role">Highest-caseload district — Europe's #1 cocaine entry port; drug trafficking, OC networks (Albanian, Moroccan, Balkan); co-leads container intelligence with Customs &amp; SPN</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Bruxelles / Brussel</span>
+      <span class="card-name">Federal Judicial Police — Brussels District</span>
+      <span class="card-role">Capital district — gang violence linked to Antwerp drug trade, human trafficking, Eurocrime; hosts Europol liaison; Molenbeek &amp; Anderlecht OC focus</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Gent</span>
+      <span class="card-name">Federal Judicial Police — Ghent District</span>
+      <span class="card-role">Port of Ghent drug seizures (7 drug-related arrests 2023); cross-border OC with Netherlands; human trafficking on E17/E40 routes</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Liège</span>
+      <span class="card-name">Federal Judicial Police — Liège District</span>
+      <span class="card-role">Major economic crime caseload — WKS/OC financial investigations; cross-border OC with Germany &amp; Netherlands; significant HT investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Mons</span>
+      <span class="card-name">Federal Judicial Police — Mons District</span>
+      <span class="card-role">Border region with France — drug transit investigations, migrant smuggling on E19/E42 corridors</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/police-federale-belgique-federale-politie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PJF Brugge</span>
+      <span class="card-name">Federal Judicial Police — Bruges District</span>
+      <span class="card-role">Port of Zeebrugge operations — secondary cocaine entry point to Antwerp; Channel tunnel smuggling routes; cross-border OC with UK</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTION & CUSTOMS -->
+<div class="section tier-dist">
+  <div class="section-label">
+    Prosecution &amp; customs enforcement
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.om-mp.be/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Federal Public Prosecutor (OC Section)</span>
+      <span class="card-name">Parquet Fédéral / Federaal Parket</span>
+      <span class="card-role">Sole prosecutorial authority for serious and transnational OC — directs all DJSOC investigations; handles encrypted-phone network prosecutions (EncroChat, Sky ECC, ANOM); 5 courts of appeal jurisdiction</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://financien.belgium.be/nl/douane_en_accijnzen" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Customs &amp; Excise (AAD)</span>
+      <span class="card-name">Algemene Administratie der Douane en Accijnzen / Administration Générale des Douanes et Accises</span>
+      <span class="card-role">Primary container-scanning authority at Antwerp-Bruges &amp; Zeebrugge — 55 tonnes cocaine seized in 2025; 82 seizures in H1 2025; works with PJF on intelligence-led targeting</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by DJSOC, all 12 PJF/FGP districts and specialist units (OCDEFO, OCRC) — link analysis, timeline charting and entity network mapping for OC and drug cases</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC / ANOM intercept data</strong>
+      <span>DJSOC and the Federal Prosecutor exploited encrypted phone takedowns — data fed into i2 for OC network reconstruction; multiple major prosecutions resulted</span>
+    </div>
+    <div class="tool-item">
+      <strong>ISLP / SIS II / Europol SIENA</strong>
+      <span>ISLP is Belgium's national police information system; connected to EU Schengen Information System and Europol SIENA for secure cross-border intelligence exchange</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

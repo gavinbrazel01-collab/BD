@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Italy — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .note-bar {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    background: #FAEEDA;
+    border-radius: 10px;
+    border: 0.5px solid #e2c99a;
+    padding: 11px 16px;
+    font-size: 12px;
+    color: #5a3d0a;
+    line-height: 1.5;
+  }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl   .card-abbr { color: #185FA5; }
+  .tier-judic  .card-abbr { color: #534AB7; }
+  .tier-inter  .card-abbr { color: #993C1D; }
+  .tier-police .card-abbr { color: #3a7d44; }
+  .tier-carab  .card-abbr { color: #7a4f1d; }
+  .tier-gdf    .card-abbr { color: #854F0B; }
+  .tier-dda    .card-abbr { color: #185FA5; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Italy — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="note-bar">
+  <strong>Note on Italy's architecture:</strong> Italy operates a unique <em>dual-track</em> system — preventive (intelligence-led) and judicial (evidence-led) — running in parallel across three competing police forces (Polizia di Stato, Carabinieri, Guardia di Finanza) each with their own specialist OC units, all coordinated by a prosecutorial superstructure (DNA → DDA). No other country in this series has this level of institutional complexity.
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">Italy is one of Europol's most active partners — DIA, ROS and SCICO all contribute to Europol's @ON project targeting Italian mafia groups abroad; Italian NCB feeds 'Ndrangheta international cocaine network intelligence to EMPACT; GICO Napoli shared 14-tonne captagon seizure data</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">DNA and DDAs actively use Eurojust for JIT coordination on 'Ndrangheta, Camorra and Cosa Nostra cases across Germany, Netherlands, Belgium and Latin America — key for cocaine supply-chain prosecutions and international asset freezes</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interpol.int/Who-we-are/Member-countries/Europe/ITALY" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">INTERPOL NCB Rome</span>
+      <span class="card-name">INTERPOL National Central Bureau — Italy (within DCPC)</span>
+      <span class="card-role">Part of the Central Directorate of Criminal Police (DCPC) — global relay for fugitives (including mafia latitanti), drug trafficking, HT and financial crime; manages I-24/7 access for all Italian law enforcement forces</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTORIAL SUPERSTRUCTURE -->
+<div class="section tier-judic">
+  <div class="section-label">
+    Prosecutorial superstructure (Ministry of Justice)
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">judicial coordination</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/direzione-nazionale-antimafia" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DNA / DNAA</span>
+      <span class="card-name">Direzione Nazionale Antimafia e Antiterrorismo</span>
+      <span class="card-role">National anti-mafia prosecutor's office — apex of the Italian OC prosecution system, est. 1991; National Prosecutor + 2 Adjuncts + 20 magistrates; coordinates all 26 DDAs nationwide; key subjects: mafia, 'ndrangheta, narcotraffico, HT, money laundering, ecomafia, public contracts; can direct DIA, ROS, SCO and SCICO</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.giustizia.it/giustizia/page/it/direzione_nazionale_antimafia_e_antiterrorismo" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA (×26)</span>
+      <span class="card-name">Direzioni Distrettuali Antimafia — 26 district offices</span>
+      <span class="card-role">District-level specialist anti-mafia prosecution units at each Court of Appeal — the operational prosecution layer below DNA; each DDA directs DIA, GICO, ROS and SCO investigations in its district; most active DDAs: Palermo, Reggio Calabria, Naples, Catanzaro, Bari, Catania, Caltanissetta, Milan, Rome</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/agenzia-nazionale-per-l-amministrazione-e-la-destinazione-dei-beni-sequestrati-e-confiscati-alla-criminalita-organizzata" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">ANBSC</span>
+      <span class="card-name">Agenzia Nazionale per i Beni Sequestrati e Confiscati alla Criminalità Organizzata</span>
+      <span class="card-role">National asset management agency — administers and reallocates confiscated mafia assets (real estate, businesses, land) to civil society and public use; 37,000+ assets managed since inception; cornerstone of Italy's "dual-track" preventive measures strategy alongside judicial prosecution</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- INTER-FORCE UNITS -->
+<div class="section tier-inter">
+  <div class="section-label">
+    Inter-force specialist units (Polizia di Stato + Carabinieri + GdF)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">tri-force</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/direzione-investigativa-antimafia" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DIA</span>
+      <span class="card-name">Direzione Investigativa Antimafia (Anti-Mafia Investigation Directorate)</span>
+      <span class="card-role">Italy's primary multi-force anti-mafia investigation body, est. 1991 — equal staffing from Polizia di Stato, Carabinieri and GdF; three departments: Preventive Investigations, Judicial Investigations, International Relations; 12 operative centres (Turin, Milan, Genoa, Padua, Florence, Rome, Naples, Bari, Reggio Calabria, Palermo, Catania, Caltanissetta) + 9 operative sections; publishes biannual OC threat reports to parliament</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://antidroga.interno.gov.it/en/home-eng/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DCSA</span>
+      <span class="card-name">Direzione Centrale per i Servizi Antidroga (Central Directorate for Anti-Drug Services)</span>
+      <span class="card-role">National drug intelligence and operational coordination body — equal staffing from Polizia di Stato, Carabinieri and GdF; sole Italian body receiving and sharing all drug-trafficking intelligence; network of law enforcement attachés posted to strategic drug-production/transit countries; coordinates controlled deliveries and undercover operations internationally; 2025 EMPACT focal point</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLIZIA DI STATO -->
+<div class="section tier-police">
+  <div class="section-label">
+    Polizia di Stato — specialist units
+    <span class="tier-badge" style="background:#EAF3DE;color:#27500A;">Polizia di Stato</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/polizia-di-stato" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">SCO</span>
+      <span class="card-name">Servizio Centrale Operativo (Central Operations Service)</span>
+      <span class="card-role">Primary investigative arm of Polizia di Stato's Direzione Centrale Anticrimine — high-complexity OC, terrorism, HT and economic crime cases; specialist STAI section for electronic surveillance, telematic analysis and image processing; oversees anti-gambling infiltration unit (Nucleo Centrale Giochi e Scommesse)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/polizia-di-stato" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DCPC / SCIP</span>
+      <span class="card-name">Direzione Centrale della Polizia Criminale — Servizio per la Cooperazione Internazionale di Polizia</span>
+      <span class="card-role">Criminal police coordination and international cooperation directorate — houses INTERPOL NCB Rome; manages bilateral liaison officers; coordinates international police cooperation for fugitives (including 41-bis mafia detainees), drug trafficking and HT across 55+ countries</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/polizia-di-stato" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">CNAIPIC / Polizia Postale</span>
+      <span class="card-name">Centro Nazionale Anticrimine Informatico per la Protezione delle Infrastrutture Critiche</span>
+      <span class="card-role">National cyber crime centre within Polizia Postale e delle Comunicazioni — critical infrastructure protection, dark-web drug market investigations, OC use of encrypted communications; coordinates with Europol's EC3 and J-CAT on Italian mafia cyber operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">cyber</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CARABINIERI -->
+<div class="section tier-carab">
+  <div class="section-label">
+    Arma dei Carabinieri — specialist units
+    <span class="tier-badge" style="background:#F1EFE8;color:#444441;">Carabinieri</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/arma-dei-carabinieri" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">ROS</span>
+      <span class="card-name">Raggruppamento Operativo Speciale (Special Operations Group)</span>
+      <span class="card-role">Elite Carabinieri OC investigative unit, est. 1990 — nationwide and international jurisdiction; targeted mafia leadership ('Ndrangheta, Cosa Nostra, Camorra); led the 2023 arrest of Matteo Messina Denaro (Sicily's most wanted fugitive, 30+ years on the run) alongside GdF GICO; reports to DNA and DDAs; internal articulation into "Criminalità Organizzata" and "Eversione" sections</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/arma-dei-carabinieri" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">TPC</span>
+      <span class="card-name">Comando Carabinieri Tutela Patrimonio Culturale (Cultural Heritage Protection Unit)</span>
+      <span class="card-role">World's oldest and largest cultural heritage police unit — combats mafia-linked trafficking in art and antiquities (a key 'Ndrangheta and Cosa Nostra revenue stream); maintains the world's largest art theft database; supports UNESCO and INTERPOL Works of Art unit</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/arma-dei-carabinieri" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NAS / NIL</span>
+      <span class="card-name">NAS (Food &amp; Health Protection) + NIL (Labour Inspection)</span>
+      <span class="card-role">NAS investigates mafia infiltration of food supply chains and pharmaceutical fraud; NIL tackles caporalato (illegal labour brokerage/forced labour) in agriculture — Italy's most prevalent form of HT; both feed cases to DDAs and ANBSC for asset confiscation</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GUARDIA DI FINANZA -->
+<div class="section tier-gdf">
+  <div class="section-label">
+    Guardia di Finanza — specialist units
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Guardia di Finanza</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/guardia-di-finanza" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">SCICO</span>
+      <span class="card-name">Servizio Centrale di Investigazione sulla Criminalità Organizzata</span>
+      <span class="card-role">GdF's central OC investigation service — coordinates and provides technical/operational support to all 26 GICO units deployed at Court of Appeal districts; focus on drug trafficking, OC money laundering, terrorist financing and arms trafficking; participated in Messina Denaro capture alongside ROS</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/guardia-di-finanza" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">GICO (×26)</span>
+      <span class="card-name">Gruppi d'Investigazione sulla Criminalità Organizzata — 26 district units</span>
+      <span class="card-role">GdF's district-level OC investigation groups — embedded in all 26 Nuclei di Polizia Economico-Finanziaria; sub-units: CRIM.OR. (organised crime), GOA (anti-drug operations), IFT (terrorist financing); major seizures include 14 tonnes of captagon (Naples 2020), 4.3 tonnes of cocaine (Trieste 2022); reports to both SCICO and local DDA</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/guardia-di-finanza" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">UIF / Banca d'Italia</span>
+      <span class="card-name">Unità di Informazione Finanziaria per l'Italia (Italian FIU, within Banca d'Italia)</span>
+      <span class="card-role">Italian FIU — receives and analyses suspicious transaction reports; channels AML intelligence to GdF SCICO/GICO, DIA and prosecutors; monitors mafia reinvestment into real estate, hospitality and construction; independent from both GdF and Ministry of Interior — housed at Bank of Italy for operational independence</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- KEY DDA DISTRICTS -->
+<div class="section tier-dda">
+  <div class="section-label">
+    Key DDA districts — highest OC caseload
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">26 DDAs total</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.procura.palermo.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Palermo</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Palermo (Sicily)</span>
+      <span class="card-role">Heart of the Cosa Nostra prosecution system — Falcone and Borsellino's legacy; ongoing maxiprocesso-era mega-trials; Matteo Messina Denaro prosecution 2023; cocaine supply from South America via 'Ndrangheta alliances; coordinates with DDA Caltanissetta and Catania</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.procura.reggiocalabria.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Reggio Calabria</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Reggio Calabria (Calabria)</span>
+      <span class="card-role">Home base of the 'Ndrangheta — the world's most powerful cocaine trafficking organisation; "Rinascita Scott" mega-trial (355 defendants, 2020–2024); Port of Gioia Tauro is Europe's largest transshipment port and primary 'Ndrangheta cocaine landing point; coordinates with DDA Catanzaro and international partners in Germany, Belgium, Australia, Canada</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.procura.napoli.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Napoli</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Naples (Campania)</span>
+      <span class="card-role">Camorra prosecution hub — 100+ active Camorra clans in Naples and Campania; Port of Naples major drug entry point (captagon seizures 2020); forced labour and HT exploitation across Campania agriculture; coordinates with DDA Salerno on cross-provincial Camorra federations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.procura.milano.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Milano</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Milan (Lombardy)</span>
+      <span class="card-role">Italy's financial capital and 'Ndrangheta money-laundering centre — OC reinvestment into Lombard real estate, construction and hospitality; North African and Albanian OC networks; Nigerian HT networks; cocaine supply for northern European consumption; Port of Genoa interdiction in coordination with DDA Genova</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.procura.roma.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Roma</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Rome (Lazio)</span>
+      <span class="card-role">Mafia Capitale legacy cases; Chinese OC (loan sharking, gambling — including April 2025 killing of Zhang Dayong, Rome representative of Chinese mafia in Europe); Romanian HT networks; Nigerian sexual exploitation networks; public procurement corruption</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.procura.bari.it" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DDA Bari</span>
+      <span class="card-name">Direzione Distrettuale Antimafia — Bari (Apulia)</span>
+      <span class="card-role">Sacra Corona Unita and Apulian OC prosecution; January 2025 dismantlement of Nigerian–Capriati clan drug alliance supplying Bari nightclubs; Port of Bari Adriatic drug entry point; Albanian OC cocaine networks; cross-border cooperation with Balkan counterparts</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools &amp; legal instruments in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by DIA, SCO, ROS, SCICO and all 26 GICO units — entity network mapping, timeline charting and financial flow analysis; also shared with DDAs for trial preparation and with Europol for @ON cross-border OC network analysis</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC + 41-bis regime</strong>
+      <span>Italian prosecutors exploited encrypted-phone takedowns for Camorra and 'Ndrangheta network reconstruction; Italy's Article 41-bis prison isolation regime (used for ~750 mafia bosses) is a unique tool that prevents OC leadership from directing operations from jail</span>
+    </div>
+    <div class="tool-item">
+      <strong>SDI / SIS II / Europol SIENA + STAI</strong>
+      <span>SDI (Sistema d'Indagine) is Italy's national police information system shared across all three forces; STAI (Sezione Tecnologie Applicate alle Investigazioni, within SCO) provides real-time electronic surveillance and telematic analysis; linked to Schengen SIS II and Europol SIENA</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

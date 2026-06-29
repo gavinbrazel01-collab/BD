@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norway — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .note-bar {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    background: #E6F1FB;
+    border-radius: 10px;
+    border: 0.5px solid #9ec4e8;
+    padding: 11px 16px;
+    font-size: 12px;
+    color: #0C3A6B;
+    line-height: 1.5;
+  }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl   .card-abbr { color: #185FA5; }
+  .tier-natl   .card-abbr { color: #534AB7; }
+  .tier-intel  .card-abbr { color: #993C1D; }
+  .tier-dist   .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Norway — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="note-bar">
+  <strong>Note on Norway's architecture:</strong> Norway is the leanest system in this series — a single national police force (Politiet) with just 12 districts, two national specialist agencies (Kripos + Økokrim), and a security service (PST) that sits outside the police directorate. Kripos alone handles OC investigations, international cooperation, forensics, cybercrime and the INTERPOL NCB. The OC threat level is low but rising, with Swedish gang spillover, OMG (outlaw motorcycle gang) activity and financial fraud at record levels the dominant concerns in 2024–2025.
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; Nordic level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">Norway is a non-EU Schengen associate with full Europol operational cooperation — Kripos participates in EMPACT drug, HT and cybercrime operations; J-CAT membership for cybercrime; 2024 joint operations with Denmark via Europol yielded 152 convictions over 5 years</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interpol.int/en/Who-we-are/Member-countries/Europe/NORWAY" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">INTERPOL NCB Oslo</span>
+      <span class="card-name">INTERPOL National Central Bureau — Norway (within Kripos)</span>
+      <span class="card-role">Housed within Kripos — Norway's primary platform for international police cooperation; global relay for drug trafficking, HT, fugitives and financial crime intelligence; monitors Nordic regional OC trends in cooperation with NCBs across Scandinavia and the Baltic Sea region (BSRBCC)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politiet.no/en/om/organisasjonen/specialist-agencies/kripos/nordic-cooperation/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Nordic Police Cooperation</span>
+      <span class="card-name">Nordic Council of Ministers — Anti-Trafficking &amp; Police Network</span>
+      <span class="card-role">Under the Nordic Council of Ministers, all five Nordic countries maintain a joint anti-trafficking working group and a cross-border police network — Kripos leads Norway's participation; 2024 focus on South American sex trafficking networks and Thai massage industry exploitation; Nordic Arrest Warrant enables expedited extraditions</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NATIONAL SPECIALIST AGENCIES -->
+<div class="section tier-natl">
+  <div class="section-label">
+    National specialist agencies (National Police Directorate)
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">nationwide jurisdiction</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/kripos" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Kripos</span>
+      <span class="card-name">Kriminalomsorgen — National Criminal Investigation Service (NCIS)</span>
+      <span class="card-role">Norway's primary national OC agency, est. 1959, ~760 staff (5% of total Norwegian police force) — investigates serious and organised crime nationwide; provides specialist advisory support to all 12 police districts; owns the national forensic laboratory; hosts INTERPOL NCB Oslo; subordinate to National Police Directorate; Operation Hubris 2024: 78 OC convictions, NOK 72.7M seized</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/kripos" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NC3</span>
+      <span class="card-name">National Cybercrime Centre (within Kripos, est. January 2019)</span>
+      <span class="card-role">100+ staff dedicated cybercrime unit — dark-web drug market investigations, OC use of encrypted-app recruitment (Swedish gang spillover), online child trafficking (2024 Europol/INTERPOL collaboration); specialist unit for internet crimes against children; J-CAT participant; mandate expanded 2024 to cover OC financial fraud at scale</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">cyber</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/okokrim" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Økokrim</span>
+      <span class="card-name">Nasjonalt organ for bekjempelse av økonom og miljøkriminalitet (National Authority for Investigation and Prosecution of Economic and Environmental Crime)</span>
+      <span class="card-role">Norway's combined police-and-prosecution unit for economic and environmental crime, est. 1989 — uniquely, senior prosecutors lead investigations AND prosecute in court; multidisciplinary teams by crime area: corruption, money laundering, fraud, tax crime, environmental crime; NOK 140M invested 2024–2025 to expand capacity; targeting AML in OC proceeds; OECD WGB, FATF, CARIN member</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/kripos" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Kripos — National HT Expert Group</span>
+      <span class="card-name">Kripos National Human Trafficking Expert Group</span>
+      <span class="card-role">Standing group of Kripos investigators and prosecutors — develops anti-trafficking methodology, shares knowledge across districts, maintains the national HT knowledge portal; 2024 focus: South American exploitation networks, Thai massage industry, Ukrainian refugee vulnerability; identified 97 victims in 2024; supports Nordic police cooperation network</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/kripos" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Kripos — Cold Case Unit</span>
+      <span class="card-name">Kripos Cold Case Unit (est. 2016; expanded November 2025)</span>
+      <span class="card-role">Reviews and reopens unresolved homicides and missing persons nationally — November 2025 mandate expanded to include AI-driven pattern recognition alongside forensic genealogy; 2024 breakthrough: first use of investigative genetic genealogy (IGG) to identify perpetrator in 1999 unsolved murder via 7,900+ genealogy database matches</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">forensics</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.toll.no/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Tollvesenet</span>
+      <span class="card-name">Norwegian Customs (Toll- og avgiftsdirektoratet)</span>
+      <span class="card-role">Border drug interdiction and smuggling enforcement — primary detection authority at ports and land borders; cigarette/tobacco seizures tripled in 2024; cocaine and amphetamine interdiction at Oslo Airport and Bergen port; shares intelligence with Kripos and PST; participates in WCO CENcomm for cross-border narcotics intelligence</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- INTELLIGENCE & SECURITY -->
+<div class="section tier-intel">
+  <div class="section-label">
+    Intelligence &amp; security services
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">security services</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/pst-politiets-sikkerhetstjeneste" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PST</span>
+      <span class="card-name">Politiets sikkerhetstjeneste (Norwegian Police Security Service)</span>
+      <span class="card-role">Domestic security intelligence service — reports directly to Ministry of Justice (not the Police Directorate); known departments include counter-intelligence, counter-terrorism, counter-proliferation and <em>organised crime unit</em>, counter-extremism, surveillance, technology and foreign citizens; investigates OC with national security dimension; feeds intelligence to Kripos; regional offices in all police districts</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/enheten-for-finansiell-etterretning" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">EFE / NAST</span>
+      <span class="card-name">Enheten for finansiell etterretning — Norwegian FIU (within Økokrim)</span>
+      <span class="card-role">Norway's Financial Intelligence Unit — housed within Økokrim; receives suspicious transaction reports from banks and financial institutions; channels AML intelligence to Kripos, Økokrim investigators and police districts; monitors OC reinvestment of drug proceeds; FATF-criticised for weaknesses in STR reporting among major banks; virtual asset regulations pending 2025</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLICE DISTRICTS -->
+<div class="section tier-dist">
+  <div class="section-label">
+    Police districts — key OC locations
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">12 districts</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/oslo-politidistrikt" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Oslo politidistrikt</span>
+      <span class="card-name">Oslo Police District</span>
+      <span class="card-role">By far Norway's highest OC caseload — Swedish gang spillover (Foxtrot network), Bandidos and Hells Angels OMG activity, drug trafficking, financial fraud (47% surge in 2024), HT networks (Nigerian, Eastern European, South American); NOK 15M of the national gang budget allocated specifically to Oslo in 2024; Kripos co-investigates major cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politiet" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Vest politidistrikt (Bergen)</span>
+      <span class="card-name">West Police District — Bergen</span>
+      <span class="card-role">Port of Bergen — significant drug interdiction point (cocaine, amphetamine); Hells Angels chapter activity; financial crime linked to the shipping and oil services sector; labour trafficking in construction and fish processing; Kripos provides specialist support on OC network cases</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politiet" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Innlandet / Øst politidistrikt</span>
+      <span class="card-name">Inland &amp; East Police Districts</span>
+      <span class="card-role">Eastern border with Sweden and Finland — drug transit on E6/E18 corridors (Lithuanian and Polish OC networks active); migrant smuggling; labour trafficking in agriculture and construction; cross-border OC with Swedish gangs; Kripos assists with complex investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politiet" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Trøndelag politidistrikt (Trondheim)</span>
+      <span class="card-name">Trøndelag Police District — Trondheim</span>
+      <span class="card-role">Bandidos MC national chapter presence; drug distribution networks (amphetamine, cocaine); Norwegian Police Threat Assessment 2025 identifies OMG recruitment challenges but continued criminal activity; financial fraud cases referred to Økokrim</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politiet" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Sør-Øst politidistrikt (Drammen)</span>
+      <span class="card-name">South-East Police District — Drammen / Vestfold</span>
+      <span class="card-role">Significant gang activity south of Oslo — drug distribution networks, OMG chapters; cross-district coordination with Oslo PD and Kripos on OC network cases; growing financial fraud referrals to Økokrim; labour trafficking in hospitality and cleaning sector</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politiet" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Finnmark politidistrikt</span>
+      <span class="card-name">Finnmark Police District (northernmost district)</span>
+      <span class="card-role">Norway's longest border with Russia and Finland — OC intelligence interest post-Ukraine war; cross-border smuggling monitoring; Ukrainian-linked smuggling networks flagged by PST; remote geography makes surveillance challenging; Kripos and PST maintain specialist support presence</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTION & OVERSIGHT -->
+<div class="section tier-dist">
+  <div class="section-label">
+    Prosecution &amp; anti-trafficking coordination
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.riksadvokaten.no/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Riksadvokaten</span>
+      <span class="card-name">Director of Public Prosecutions (Riksadvokaten)</span>
+      <span class="card-role">Head of the Norwegian Prosecuting Authority — decides indictments for cases with maximum 21-year penalties (all serious OC); oversees six regional prosecution offices; police prosecutors handle primary-level cases and go to court for minor charges; Kripos and Økokrim prosecutors operate under Riksadvokaten's authority on serious OC cases</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.kompetansesenter-mot-menneskehandel.no/en/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">KOM</span>
+      <span class="card-name">Koordineringsenheten for ofre for menneskehandel (National Coordination Unit for Victims of Trafficking)</span>
+      <span class="card-role">Government anti-trafficking coordination body — publishes annual HT report (97 victims identified in 2024, 183 assisted); issued national victim identification and referral guidelines in 2024; chairs inter-ministerial anti-trafficking commission; coordinates police, labour inspectors, child protection and NGOs; under Ministry of Justice</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">coordination</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by Kripos, Økokrim and key police district OC units — entity network mapping, link analysis and financial flow charting; also used in joint Europol operations with Danish, Swedish and other Nordic counterparts</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC + Investigative Genetic Genealogy</strong>
+      <span>Kripos exploits encrypted-phone takedown data for OC network reconstruction; NC3 monitors new encrypted platforms; Kripos made Norway's first use of IGG (investigative genetic genealogy) in 2024 — 7,900+ genealogy matches resolved a 25-year-old unsolved murder; AI-driven pattern recognition added to Cold Case Unit mandate in November 2025</span>
+    </div>
+    <div class="tool-item">
+      <strong>STRASAK / SIS II / Europol SIENA + SIRENE</strong>
+      <span>STRASAK is Norway's national police criminal records system; linked to EU Schengen Information System (SIS II) as a Schengen associate; Kripos manages Europol SIENA secure channel and SIRENE bureau for Schengen-wide alerts; INTERPOL I-24/7 access for all districts via NCB Oslo</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

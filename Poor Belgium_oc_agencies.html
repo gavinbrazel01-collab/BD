@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belgium — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-bk    .card-abbr { color: #993C1D; }
+  .tier-state .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Belgium — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — supports Belgian investigations, runs EMPACT operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Coordinates cross-border prosecutions; Belgium's national member based in The Hague</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Belgium's NCB is housed within the Federal Police — red notices, fugitive tracking</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL COORDINATION -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Federal level — coordination &amp; prosecution
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Federale Overheidsdienst</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/federale-overheidsdienst-binnenlandse-zaken" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">FOD Binnenlandse Zaken</span>
+      <span class="card-name">Federal Public Service Interior</span>
+      <span class="card-role">Oversees the Federal Police and coordinates security policy across all law enforcement bodies</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/federale-overheidsdienst-justitie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">FOD Justitie</span>
+      <span class="card-name">Federal Public Service Justice</span>
+      <span class="card-role">Criminal law framework, oversees the Public Prosecutor's Office (College van procureurs-generaal)</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.om-mp.be/nl/procureur-generaal" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">College van procureurs-generaal</span>
+      <span class="card-name">College of Attorneys General</span>
+      <span class="card-role">Highest prosecutorial authority in Belgium; coordinates the five Courts of Appeal jurisdictions</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL POLICE -->
+<div class="section tier-bk">
+  <div class="section-label">
+    Federal Police — Federale Politie / Police Fédérale
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Federale Politie</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/federale-politie-belgium" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Federale Politie</span>
+      <span class="card-name">Belgian Federal Police</span>
+      <span class="card-role">Central criminal investigation service — houses the Central Office for Serious and Organised Crime (COSOCO)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/coordinatie-en-stuurdiensten/criminele-inlichtingen" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Dienst Criminele Inlichtingen (DCI)</span>
+      <span class="card-name">Criminal Intelligence Service</span>
+      <span class="card-role">Central intelligence unit within the Federal Police; collects, analyses, and disseminates intelligence on organised crime</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/coordinatie-en-stuurdiensten/bestrijding-van-de-zware-en-georganiseerde-criminaliteit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">COSOCO</span>
+      <span class="card-name">Central Office for Serious and Organised Crime</span>
+      <span class="card-role">Federal directorate responsible for leading large-scale OC investigations. Operational support to local judicial police (PDJ/PJ).</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST FEDERAL UNITS -->
+<div class="section tier-bk">
+  <div class="section-label">
+    Specialist federal units
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">within Federale Politie</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/coordinatie-en-stuurdiensten/drugs" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Federal Drug Unit (FDU)</span>
+      <span class="card-name">Central Drug Investigation Unit</span>
+      <span class="card-role">Specialised unit within COSOCO focusing on large-scale drug trafficking, import/export via ports (Antwerp) and airports</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/coordinatie-en-stuurdiensten/mensenhandel" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Federal Human Trafficking Unit</span>
+      <span class="card-name">Central Unit for Human Trafficking and Smuggling</span>
+      <span class="card-role">Investigates trafficking in human beings (THB) and human smuggling (THS) — works with IOM and Europol</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/coordinatie-en-stuurdiensten/financieel-economische-criminaliteit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Financieel-Economische Dienst (FED)</span>
+      <span class="card-name">Financial and Economic Crime Service</span>
+      <span class="card-role">Investigates money laundering, corruption, and financial flows linked to OC. Works closely with CTIF-CFI (Financial Intelligence Unit).</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- JUDICIAL POLICE -->
+<div class="section tier-state">
+  <div class="section-label">
+    Judicial Police — Politie van de Rechterlijke Orde / Police Judiciaire (PJ)
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">5 gerechtelijke arrondissementen</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/gespecialiseerde-diensten/politie-van-de-rechterlijke-orde" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ Antwerpen</span>
+      <span class="card-name">Judicial Police — Antwerp</span>
+      <span class="card-role">Covers the Antwerp judicial district. Critical role in investigating drug trafficking through the Port of Antwerp, one of Europe's largest cocaine entry points.</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/gespecialiseerde-diensten/politie-van-de-rechterlijke-orde" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ Brussel</span>
+      <span class="card-name">Judicial Police — Brussels</span>
+      <span class="card-role">Capital region — handles high-profile OC, human trafficking, and financial crime cases. Coordinates with EU institutions.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/gespecialiseerde-diensten/politie-van-de-rechterlijke-orde" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ Oost-Vlaanderen</span>
+      <span class="card-name">Judicial Police — East Flanders</span>
+      <span class="card-role">Ghent-based; investigates OC and drug trafficking via regional ports and inland waterways.</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/gespecialiseerde-diensten/politie-van-de-rechterlijke-orde" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ Luik</span>
+      <span class="card-name">Judicial Police — Liège</span>
+      <span class="card-role">Walloon region — border with Germany and Luxembourg; cross-border OC and human trafficking investigations.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/federale/nl/over-ons/diensten/gespecialiseerde-diensten/politie-van-de-rechterlijke-orde" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PJ Henegouwen</span>
+      <span class="card-name">Judicial Police — Hainaut</span>
+      <span class="card-role">Mons-based; border with France, major smuggling routes for drugs and human trafficking.</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- LOCAL POLICE -->
+<div class="section tier-state">
+  <div class="section-label">
+    Local Police — Lokale Politie / Police Locale
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">188 zones / 6 zonale veiligheidsraden</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.politie.be/zonale/politiezone-zuid" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Lokale Recherche</span>
+      <span class="card-name">Local Criminal Investigation (within each police zone)</span>
+      <span class="card-role">Investigates lower-level organised crime, local drug trade, and human trafficking. Works with Federal Police on larger cross-zone cases.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politie.be/zonale/politiezone-antwerpen" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Zone Antwerpen</span>
+      <span class="card-name">Antwerp Local Police Zone</span>
+      <span class="card-role">Largest local zone — major drug-related and human trafficking caseload; key partner to PJ Antwerpen and COSOCO.</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALISED PARTNERS -->
+<div class="section tier-state">
+  <div class="section-label">
+    Specialised partners &amp; intelligence
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">intelligence &amp; oversight</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/ctif-cfi-belgium" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">CTIF-CFI</span>
+      <span class="card-name">Cellule de Traitement des Informations Financières</span>
+      <span class="card-role">Belgian Financial Intelligence Unit (FIU) — receives, analyses, and disseminates suspicious transaction reports (STRs) to law enforcement.</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.vastateveiligheid.be" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">VSSE</span>
+      <span class="card-name">Veiligheid van de Staat — Staatsveiligheid</span>
+      <span class="card-role">State Security Service — domestic intelligence. Assesses threats to national security, including OC with extremist or geopolitical dimensions.</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.om-mp.be/nl/college-van-procureurs-generaal" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ADIV / SGRS</span>
+      <span class="card-name">Algemene Dienst Inlichting en Veiligheid — General Intelligence and Security Service</span>
+      <span class="card-role">Military intelligence — monitors threats to the armed forces and national security, including OC-linked threats.</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CUSTOMS -->
+<div class="section tier-state">
+  <div class="section-label">
+    Customs &amp; border enforcement
+    <span class="tier-badge" style="background:#EAF3DE;color:#27500A;">Douane / Douane Belgique</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.fin.belgium.be/nl/douane" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Douane België</span>
+      <span class="card-name">Belgian Customs — Federal Public Service Finance</span>
+      <span class="card-role">Intercepts drugs at seaports (Antwerp, Zeebrugge) and airports (Brussels). Key partner in dismantling import/export trafficking networks.</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.ibz.rrn.fgov.be/nl/dienst-vreemdelingenzaken/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DVZ / OE</span>
+      <span class="card-name">Dienst Vreemdelingenzaken — Office des Étrangers</span>
+      <span class="card-role">Immigration service — investigates migrant smuggling and human trafficking; works closely with Federal Police and Europol.</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by the Federal Police (COSOCO), DCI, and all PJ units — link analysis, timeline charting, entity mapping for OC networks</span>
+    </div>
+    <div class="tool-item">
+      <strong>SIS II / INPOL / EKIS links</strong>
+      <span>Shared police databases across federal and local levels; EU-wide Schengen Information System and Interpol connections for cross-border lookups</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC data</strong>
+      <span>Federal Police and PJ units have exploited encrypted-phone intercepts — data fed into i2 for OC network reconstruction and financial tracing</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spain — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-reg   { background: #F3E5F5; color: #4A148C; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-pn    .card-abbr { color: #993C1D; }
+  .tier-gc    .card-abbr { color: #1B6B3A; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+  .tier-reg   .card-abbr { color: #4A148C; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Spain — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). Spain has a dual-track national police system — Policía Nacional (urban) and Guardia Civil (rural, borders, coasts) — with parallel specialist OC units. Regional forces in Catalonia (Mossos d'Esquadra), the Basque Country (Ertzaintza) and Navarra (Policía Foral) also have OC jurisdiction in their territories.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">Spain is one of Europol's most active member states — leads EMPACT drug trafficking and OC operations. Policía Nacional and Guardia Civil second officers to The Hague. Major operations include EncroChat, Sky ECC and Atlantic cocaine seizures</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Spain's national member at Eurojust coordinates JITs with Italy (Ndrangheta), Netherlands (drug ports), France and Portugal. The Audiencia Nacional is Spain's primary court for Eurojust-level OC cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Spain's NCB is housed within the Policía Nacional in Madrid. Regular participation in INTERPOL operations targeting Latin American OC networks, fugitives and human trafficking</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MINISTERIAL & PROSECUTION -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Ministerial, judicial &amp; prosecution level
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Gobierno</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/ministeriodelinterior" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Ministerio del Interior</span>
+      <span class="card-name">Ministry of the Interior — Gobierno de España</span>
+      <span class="card-role">Oversees Policía Nacional and Guardia Civil — all national OC, drug and HT policy. Sets the National Security Strategy and annual OC threat assessment. Houses the Secretaría de Estado de Seguridad</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.fiscal.es/fiscal/apex/f?p=285:1" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Fiscalía Especial Antidroga</span>
+      <span class="card-name">Fiscalía Especial contra el Narcotráfico y otros Ilícitos</span>
+      <span class="card-role">Specialist anti-narcotics prosecutor attached to the Audiencia Nacional — directs UDYCO and UCO drug investigations nationally. Issues international judicial assistance requests for Latin American drug networks</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.audiencianacional.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Audiencia Nacional</span>
+      <span class="card-name">Audiencia Nacional — National Court</span>
+      <span class="card-role">Spain's high court for serious organised crime, drug trafficking and terrorism — hears all major OC and drug trafficking cases with national or international scope. Investigative judges (Juzgados Centrales de Instrucción) direct the most complex OC investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POLICÍA NACIONAL -->
+<div class="section tier-pn">
+  <div class="section-label">
+    Policía Nacional — Comisaría General de Policía Judicial (CGPJ)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Policía Nacional</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.policia.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Policía Nacional</span>
+      <span class="card-name">Cuerpo Nacional de Policía — Comisaría General de Policía Judicial</span>
+      <span class="card-role">Urban national police — primary OC authority in cities and Ceuta/Melilla. CGPJ contains all specialist OC units: UDYCO, UDEF, UCRIF, GRECO. In 2024: 12,068 operations, 5,911 arrests, 264,527 kg drugs seized across national units</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policia.es/org_central/judicial/udef/presentacion.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UDYCO</span>
+      <span class="card-name">Unidad de Drogas y Crimen Organizado</span>
+      <span class="card-role">Lead Policía Nacional unit for drug trafficking and OC — contains the Central Narcotics Brigade and Central OC Brigade (GRECO). Op White Lion 2024: dismantled Europe's largest OC underground bank, 80+ arrested, €100m+ frozen</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policia.es/org_central/judicial/udef/presentacion.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UDEF</span>
+      <span class="card-name">Unidad de Delincuencia Económica y Fiscal</span>
+      <span class="card-role">Economic and financial crime unit — money laundering, asset tracing, OC financial flows. Works with Fiscalía Anticorrupción and Audiencia Nacional on OC financial crime including crypto laundering. Seized €130m+ assets in 2024 anti-laundering operations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policia.es/org_central/judicial/ucrif/presentacion.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UCRIF</span>
+      <span class="card-name">Unidad Central de Redes de Inmigración Ilegal y Falsedades Documentales</span>
+      <span class="card-role">Human trafficking and illegal immigration networks unit — investigates HT for sexual and labour exploitation, migrant smuggling and document fraud. Primary HT investigation unit alongside EDOA in Madrid</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policia.es/org_central/judicial/cgpj/unidades_esp/bdc/presentacion.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">BDC / Ciberdelincuencia</span>
+      <span class="card-name">Brigada de Investigación Tecnológica — Cybercrime</span>
+      <span class="card-role">National cybercrime unit — dark-web drug markets, OC digital infrastructure, EncroChat/Sky ECC exploitation, cybercrime-as-a-service. Works with Europol EC3 on cross-border cybercrime and OC-enabling technologies</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.policia.es/org_central/inteligencia/presentacion.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CNPIC / Inteligencia</span>
+      <span class="card-name">Comisaría General de Información</span>
+      <span class="card-role">Intelligence branch of Policía Nacional — covert operations, source handling, counter-intelligence in OC. Works alongside CNI on OC threats with national security dimension. Analytical support to UDYCO and UCRIF</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GUARDIA CIVIL -->
+<div class="section tier-gc">
+  <div class="section-label">
+    Guardia Civil — rural, border, coast &amp; specialist OC
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Guardia Civil</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.guardiacivil.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Guardia Civil</span>
+      <span class="card-name">Cuerpo de la Guardia Civil</span>
+      <span class="card-role">Military-structured national gendarmerie — rural areas, coasts, borders, ports and territorial waters. Primary OC authority outside cities. Under both Ministry of Interior (policing) and Ministry of Defence. Covers Strait of Gibraltar drug routes and Atlantic coast</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.guardiacivil.es/es/institucional/Conocenos/especialidades/Policia_Judicial/UCO/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UCO</span>
+      <span class="card-name">Unidad Central Operativa — Guardia Civil</span>
+      <span class="card-role">Elite criminal investigation unit created 1987 — handles Spain's most complex OC, corruption, drug trafficking and economic crime cases. Contains: Anti-Drug Unit, Economic Crime/Anti-Corruption Unit, Crimes Against Persons (incl. HT sub-section), and Technological Crimes Unit. Strong Audiencia Nacional links</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.guardiacivil.es/es/institucional/Conocenos/especialidades/Policia_Judicial/EDOA/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">EDOA</span>
+      <span class="card-name">Equipo de Delitos de Organización y Trata — Guardia Civil</span>
+      <span class="card-role">Specialist HT team within Guardia Civil — investigates labour trafficking, sexual exploitation and migrant smuggling in rural areas, agricultural sectors and border zones where Guardia Civil has territorial primacy</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.guardiacivil.es/es/institucional/Conocenos/especialidades/Policia_Judicial/GRECO/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GRECO</span>
+      <span class="card-name">Grupos de Respuesta Especial contra el Crimen Organizado</span>
+      <span class="card-role">Special response groups against OC — embedded in both Policía Nacional (UDYCO) and Guardia Civil. Highly mobile operational units that deploy nationally for major OC takedowns including drug network dismantlements on the Costa del Sol</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.guardiacivil.es/es/institucional/Conocenos/especialidades/Policia_Judicial/SILC/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SILC / ODAIFI</span>
+      <span class="card-name">Servicio de Investigación de Lavado de Capitales / ODAIFI</span>
+      <span class="card-role">Guardia Civil money laundering and financial crime units — traces OC asset flows including real estate, crypto and luxury goods. ODAIFI covers fiscal crimes and contraband at entry points. Feeds into SEPBLAC financial intelligence system</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.guardiacivil.es/es/institucional/Conocenos/especialidades/Cibercrimen/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GC — Cibercrimen</span>
+      <span class="card-name">Guardia Civil — Unidad de Cibercrimen</span>
+      <span class="card-role">Cyber crime unit — dark-web investigations, OC digital communications, cryptocurrency tracing. Works alongside UCO Technological Crimes Unit and Europol EC3 on cross-border cybercrime with OC links</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- REGIONAL POLICE FORCES -->
+<div class="section tier-reg">
+  <div class="section-label">
+    Regional police forces with OC jurisdiction
+    <span class="tier-badge" style="background:#F3E5F5;color:#4A148C;">Policías Autonómicas</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://mossos.gencat.cat" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Mossos d'Esquadra</span>
+      <span class="card-name">Mossos d'Esquadra — Catalonia</span>
+      <span class="card-role">Catalan police with full OC jurisdiction in Catalonia — Division d'Investigació Criminal (DIC) is their OC equivalent of UCO/UDYCO. Major drug trafficking nexus through Port of Barcelona. Works with UDYCO but independently on Catalan cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-reg">regional</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.ertzaintza.eus" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Ertzaintza</span>
+      <span class="card-name">Ertzaintza — Basque Country Police</span>
+      <span class="card-role">Basque autonomous police with full OC jurisdiction in Euskadi — Brigada de Policía Judicial handles OC and drug trafficking. Significant OC caseload given Basque Country's transit routes to France; historical links to ETA-adjacent criminal networks</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-reg">regional</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://policiaforal.navarra.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Policía Foral de Navarra</span>
+      <span class="card-name">Policía Foral — Navarra</span>
+      <span class="card-role">Navarra's own police force — OC jurisdiction within the foral territory. Drug trafficking investigations along the French border corridor; coordinates with Guardia Civil and Gendarmerie nationale on cross-border cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-reg">regional</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST & FINANCIAL -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Financial intelligence &amp; specialist agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">Agencias especializadas</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.sepblac.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SEPBLAC</span>
+      <span class="card-name">Servicio Ejecutivo de la Comisión de Prevención del Blanqueo de Capitales</span>
+      <span class="card-role">Spain's Financial Intelligence Unit (FIU) — receives and analyses suspicious transaction reports linked to OC money laundering. Member of Egmont Group. Feeds intelligence to UDEF, UCO SILC and Audiencia Nacional prosecutors</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/departamento-de-seguridad-nacional" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DSN</span>
+      <span class="card-name">Departamento de Seguridad Nacional</span>
+      <span class="card-role">National Security Department — advises the President on strategic threats including OC with state-security dimension. Coordinates between CNI, Policía Nacional and Guardia Civil on high-level SOC threats</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.agenciatributaria.es" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">AEAT — Vigilancia Aduanera</span>
+      <span class="card-name">Agencia Tributaria — Servicio de Vigilancia Aduanera</span>
+      <span class="card-role">Customs enforcement arm of the tax agency — maritime drug interdiction, port and border seizures, illicit tobacco and contraband. Works closely with Guardia Civil on Strait of Gibraltar cocaine and hashish operations. Major seizures at Algeciras, Valencia and Barcelona ports</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by UCO (Guardia Civil), UDYCO, UDEF (Policía Nacional) and Mossos d'Esquadra DIC — link analysis, network mapping and timeline charting. UCO is particularly known for sophisticated i2 use in complex OC and corruption investigations</span>
+    </div>
+    <tool-item class="tool-item">
+      <strong>EncroChat / Sky ECC / Ghost data</strong>
+      <span>Spain was one of the most active exploiters of EncroChat intercepts — hundreds of arrests. UCO and UDYCO continue processing Sky ECC and Ghost Immobiliser data for ongoing OC network prosecutions at Audiencia Nacional</span>
+    </tool-item>
+    <div class="tool-item">
+      <strong>SIGO / SIS II / FIES</strong>
+      <span>SIGO (national criminal intelligence system), EU Schengen Information System (SIS II) and FIES (high-risk prisoner file system for OC leaders in custody). SEPBLAC provides financial intelligence feeds to UDEF and UCO</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Spain's dual-force system means Policía Nacional and Guardia Civil have overlapping OC jurisdiction — coordination is managed through the Secretaría de Estado de Seguridad and the Audiencia Nacional. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

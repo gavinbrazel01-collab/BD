@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hungary — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl   .card-abbr { color: #185FA5; }
+  .tier-natl   .card-abbr { color: #534AB7; }
+  .tier-intel  .card-abbr { color: #993C1D; }
+  .tier-county .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Hungary — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — Hungary participates in EMPACT drug and HT operations; KR NNI and ORFK run joint investigation teams with Slovak, German and Spanish counterparts; Hungarian national desk embedded at The Hague</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Judicial coordination for cross-border OC prosecutions — Hungarian national desk supports JITs with Slovakia, Germany, Spain and Panama (2024 cocaine network dismantlement); coordinates extraditions and asset freezes</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interpol.int/Who-we-are/Member-countries/Europe/HUNGARY" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">INTERPOL NCB Budapest</span>
+      <span class="card-name">INTERPOL National Central Bureau — Hungary</span>
+      <span class="card-role">Part of the International Law Enforcement Cooperation Centre (ILECC), the lead agency for all international police cooperation involving Hungary — global relay for OC intelligence on prostitution networks, vehicle crime, HT and drug trafficking along Balkan Route</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NATIONAL POLICE UNITS -->
+<div class="section tier-natl">
+  <div class="section-label">
+    National police units — ORFK &amp; KR
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">nationwide jurisdiction</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">ORFK</span>
+      <span class="card-name">Országos Rendőr-főkapitányság (National Police Headquarters)</span>
+      <span class="card-role">Central command of the Hungarian Police under the Ministry of Interior — oversees all 19 county police headquarters and Budapest, specialist national units (KR NNI, TEK, ILECC) and the NVSZ internal affairs stream; 2024–2034 National Crime Prevention Strategy owner</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">coordination</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://english.nmhh.hu/article/190292/Hungarian_National_Police_Headquarters_ORFK_National_Bureau_of_Investigation_of_the_Rapid_Response_and_Special_Police_Service_KRNNI" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">KR NNI</span>
+      <span class="card-name">Készenléti Rendőrség — Nemzeti Nyomozó Iroda (National Bureau of Investigation)</span>
+      <span class="card-role">Primary national serious crime investigative unit within the Rapid Response &amp; Special Police Service — investigates OC networks, major drug trafficking, cybercrime and serious financial crime; leads complex multi-agency operations including 100+ officer drug raids; NVSZ tip-offs feed NNI operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.hungarianconservative.com/articles/current/hungary-anti-drug-task-force-formed/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Drogbűnözés Elleni Iroda</span>
+      <span class="card-name">Office for Combating Drug Crime (est. 1 January 2025, within KR NNI)</span>
+      <span class="card-role">New 150-officer national anti-narcotics unit — 60-member rapid response team for immediate network raids; Budapest HQ + 6 regional centres; first operation seized 45,000 doses (150M HUF) in Pécs; part of PM Orbán's "zero-tolerance" drug crackdown and April 2025 constitutional drug prohibition</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/terrorelhárítási-központ-tek" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">TEK</span>
+      <span class="card-name">Terrorelhárítási Központ (Counter Terrorism Centre)</span>
+      <span class="card-role">National counter-terrorism and high-risk tactical unit under the Ministry of Interior — provides armed tactical support to KR NNI raids on armed drug networks and OC suspects (e.g. 2025 Budapest crystal-meth ring); personal protection of senior officials; extradition escort operations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">tactical support</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.police.hu/en/content/international-law-enforcement-cooperation-centre" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ILECC</span>
+      <span class="card-name">International Law Enforcement Cooperation Centre</span>
+      <span class="card-role">Hungary's national international police cooperation hub — houses INTERPOL NCB Budapest, Europol national desk and bilateral liaison officers; coordinates JIT communications; monitors emerging Balkan Route drug and HT transit trends with NCBs across the region</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://nav.gov.hu/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NAV</span>
+      <span class="card-name">Nemzeti Adó- és Vámhivatal (National Tax and Customs Administration)</span>
+      <span class="card-role">Customs enforcement, border drug interdiction and financial crime investigation — Directorate-General for Crime is NAV's dedicated tax police for financial OC; houses Hungary's Financial Intelligence Unit (HFIU) which receives and analyses suspicious transaction reports and disseminates to ORFK and prosecutors</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- INTELLIGENCE & SECURITY SERVICES -->
+<div class="section tier-intel">
+  <div class="section-label">
+    Intelligence &amp; security services (Ministry of Interior / PM Cabinet Office)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">intelligence community</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://ah.gov.hu/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">AH</span>
+      <span class="card-name">Alkotmányvédelmi Hivatal (Constitution Protection Office)</span>
+      <span class="card-role">Domestic intelligence and counter-intelligence agency — OC with national security dimension, economic security threats, corruption in public institutions, infiltration of state bodies by foreign criminal networks; national security screening of visa and residency applicants; feeds intelligence to ORFK and prosecutors</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://nvsz.hu/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NVSZ</span>
+      <span class="card-name">Nemzeti Védelmi Szolgálat (National Protective Service)</span>
+      <span class="card-role">Internal affairs and integrity unit for all Hungarian law enforcement — screens police, customs and prison officers for corruption and OC links; runs covert integrity tests; tip-offs from NVSZ triggered the 2025 Budapest crystal-meth ring operation led by KR NNI</span>
+      <div class="card-tags">
+        <span class="tag tag-int">anti-corruption</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://nbsz.gov.hu/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NBSZ</span>
+      <span class="card-name">Nemzeti Biztonsági Szakszolgálat (Special Service for National Security)</span>
+      <span class="card-role">Technical surveillance and signals intelligence support service — provides court-authorised intercept capability (wiretap, electronic surveillance) for ORFK, KR NNI, AH and TEK operations against OC and drug networks; does not conduct its own investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-int">technical surveillance</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- COUNTY POLICE HEADQUARTERS -->
+<div class="section tier-county">
+  <div class="section-label">
+    County police headquarters — key OC regions
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">19 counties + Budapest</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/budapesti-rendőr-főkapitányság" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BRFK — Budapest</span>
+      <span class="card-name">Budapesti Rendőr-főkapitányság (Budapest Metropolitan Police HQ)</span>
+      <span class="card-role">Highest OC caseload in the country — drug trafficking networks (crystal meth, designer drugs, cocaine), prostitution rings, HT, financial crime and armed OC; OC concentrated in Pest inner districts and Szabolcs County supply routes; TEK tactical support for high-risk raids</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Baranya MRFK (Pécs)</span>
+      <span class="card-name">Baranya Megyei Rendőr-főkapitányság</span>
+      <span class="card-role">Southern border with Croatia and Serbia — Balkan Route drug transit; first NNI drug bureau operation seized 45,000 doses here in 2025; migrant smuggling on M60 corridor; arms trafficking cases linked to Balkan OC networks</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Csongrád-Csanád MRFK (Szeged)</span>
+      <span class="card-name">Csongrád-Csanád Megyei Rendőr-főkapitányság</span>
+      <span class="card-role">Major border crossing at Röszke (Serbia) — one of Europe's busiest OC and migrant smuggling points; drug and firearms transit on M5/E75 corridor; ILECC monitors this crossing for cross-border network movement</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Szabolcs-Szatmár-Bereg MRFK (Nyíregyháza)</span>
+      <span class="card-name">Szabolcs-Szatmár-Bereg Megyei Rendőr-főkapitányság</span>
+      <span class="card-role">Northeast border with Ukraine and Romania — highest registered crime rate per capita in Hungary; drug supply routes into Budapest (Szabolcs County cited in 2025 meth ring case); cross-border OC with Ukrainian criminal groups; HT recruitment in deprived communities</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Győr-Moson-Sopron MRFK</span>
+      <span class="card-name">Győr-Moson-Sopron Megyei Rendőr-főkapitányság</span>
+      <span class="card-role">Northwest border with Austria and Slovakia — drug and counterfeit goods transit toward Vienna; vehicle crime networks operating cross-border; HT victims moved westward on M1 corridor; NAV customs operations at Hegyeshalom crossing point</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/orfk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Borsod-Abaúj-Zemplén MRFK (Miskolc)</span>
+      <span class="card-name">Borsod-Abaúj-Zemplén Megyei Rendőr-főkapitányság</span>
+      <span class="card-role">Northern Hungary — highest concentration of registered crime perpetrators per capita; border with Slovakia; cross-border Slovak–Hungarian OC networks (2024 JIT with Eurojust); drug trafficking on M3 corridor; labour trafficking of Roma communities toward Western Europe</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTION & FINANCIAL -->
+<div class="section tier-county">
+  <div class="section-label">
+    Prosecution &amp; financial intelligence
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://ugyeszseg.hu/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Prosecutor General's Office (PGO)</span>
+      <span class="card-name">Legfőbb Ügyészség — Office of the Prosecutor General</span>
+      <span class="card-role">Sole prosecutorial authority for all OC, drug and HT cases — county chief prosecutors each designate a specialist trafficking prosecutor; PGO published practical guide for investigators in 2024; 82 HT suspects prosecuted in 2024; coordinates with Eurojust on JIT prosecutions</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://nav.gov.hu/en/anti_money_laundering/Hungarian_Financial_Intelligence_Unit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">HFIU</span>
+      <span class="card-name">Hungarian Financial Intelligence Unit (within NAV Central Management)</span>
+      <span class="card-role">National FIU — receives and analyses suspicious transaction reports from banks, financial institutions and designated non-financial businesses; disseminates AML intelligence to ORFK, KR NNI and the Prosecutor General; monitors criminal reinvestment into real estate and casino chains</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by KR NNI and county police criminal investigation units — entity network mapping, link analysis and timeline charting for OC, drug trafficking and HT cases; also used in Europol JIT work with Slovak, German and Spanish investigators</span>
+    </div>
+    <div class="tool-item">
+      <strong>NBSZ court-authorised intercept / EncroChat data</strong>
+      <span>NBSZ provides technical surveillance infrastructure for all court-authorised wiretap and electronic intercept operations; KR NNI and ORFK exploit EncroChat/Sky ECC takedown data for OC network reconstruction; criminal shift to newer encrypted platforms being monitored</span>
+    </div>
+    <div class="tool-item">
+      <strong>ROBOTZSARU / SIS II / Europol SIENA</strong>
+      <span>ROBOTZSARU is Hungary's integrated police information system; linked to EU Schengen Information System and Europol SIENA secure channel; ILECC manages INTERPOL I-24/7 databases; NAV customs uses separate WCO CENcomm system for cross-border drug interdiction intelligence</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

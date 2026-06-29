@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greece — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .notice-box {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    background: #FAEEDA;
+    border: 0.5px solid #e3c98a;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #633806;
+    line-height: 1.5;
+  }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-daoe  .card-abbr { color: #993C1D; }
+  .tier-state .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Greece — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="notice-box">
+  <strong>Structural note:</strong> Greece's organised-crime investigation landscape changed substantially in late 2024 with the creation of the Organized Crime Division (Δ.Α.Ο.Ε. — "DAOE", dubbed the "Greek FBI" in domestic press) under Presidential Decree 29/2024. DAOE has nationwide territorial jurisdiction and reports directly to the Chief of the Hellenic Police rather than through normal regional command — all local Crime Investigation Subdivisions must now report findings up to it, a centralisation that didn't exist before October 2024. A broader Hellenic Police reorganisation under Law 7187/2025 has also restructured several directorates around it.
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">DAOE and its International Cooperation Department run joint operations through Europol on Balkan-route drug trafficking and migrant-smuggling networks active in the Aegean</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Coordinates cross-border prosecutions and joint investigation teams; Greece's national member based in The Hague</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Greece's National Central Bureau sits within Hellenic Police Headquarters; Chief Dimitrios Mallios has met directly with INTERPOL on emerging European crime threats</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FRONTEX / BORDER -->
+<div class="section tier-intl">
+  <div class="section-label">
+    EU border &amp; migration agencies
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">Aegean &amp; Evros frontline</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/frontex" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Frontex</span>
+      <span class="card-name">European Border and Coast Guard Agency</span>
+      <span class="card-role">Runs one of its largest operational deployments in Greece, covering both the Evros land border with Turkey and Aegean sea crossings — works directly with the Hellenic Police, Coast Guard and Border Guards</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">border security</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.hcg.gr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Hellenic Coast Guard</span>
+      <span class="card-name">Λιμενικό Σώμα – Ελληνική Ακτοφυλακή</span>
+      <span class="card-role">Shares sea-border protection with the Hellenic Police under the Schengen Acquis and Frontex framework — lead agency for migrant-smuggling boat interdiction across the Aegean and has separately investigated NGO-linked smuggling-adjacent activity</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NATIONAL COORDINATION -->
+<div class="section tier-fed">
+  <div class="section-label">
+    National level — ministry &amp; prosecution
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">national</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/ministry-of-citizen-protection" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Υπουργείο Προστασίας του Πολίτη</span>
+      <span class="card-name">Ministry of Citizen Protection</span>
+      <span class="card-role">Oversees the Hellenic Police, Hellenic Coast Guard and EYP; led the 2024–2025 reorganisation that created DAOE and restructured Hellenic Police Headquarters under Law 7187/2025</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.areiospagos.gr" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Εισαγγελία Αρείου Πάγου</span>
+      <span class="card-name">Supreme Court Public Prosecutor's Office</span>
+      <span class="card-role">Apex prosecutorial authority; organised-crime, trafficking and corruption cases are typically handled by specialised prosecutors within the Athens and Thessaloniki Courts of Appeal, working directly with DAOE</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ΕΛ.ΑΣ.</span>
+      <span class="card-name">Hellenic Police (Ελληνική Αστυνομία)</span>
+      <span class="card-role">Unified national police since the 1984 merger of the Gendarmerie and Cities Police — around 50,000 personnel, structured into Central Services (including DAOE) and Regional Services across two policing sectors, Northern and Southern Greece</span>
+      <div class="card-tags">
+        <span class="tag tag-int">command</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NATIONAL INVESTIGATION & INTELLIGENCE AGENCIES -->
+<div class="section tier-daoe">
+  <div class="section-label">
+    National investigation &amp; intelligence agencies
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">κεντρικές υπηρεσίες</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Δ.Α.Ο.Ε. (DAOE)</span>
+      <span class="card-name">Organized Crime Division (Διεύθυνση Αντιμετώπισης Οργανωμένου Εγκλήματος)</span>
+      <span class="card-role">Created October 2024 with nationwide jurisdiction, headquartered in Athens but commanded directly by the Chief of Hellenic Police. Five subdivisions: Narcotics; Property Crimes &amp; Crimes Against Life; Human Trafficking &amp; Illegal Items Trafficking; Organised Athletic Violence; and Intelligence &amp; Operations — plus regional subdivisions for Northern Greece and Crete. Reported 139 criminal rings dismantled and €6 million seized in its first year.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nis.gr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">EYP</span>
+      <span class="card-name">Εθνική Υπηρεσία Πληροφοριών (National Intelligence Service)</span>
+      <span class="card-role">Autonomous civilian agency reporting to the Prime Minister — counterintelligence, counterterrorism, and organised crime with a national-security dimension; ran the 2021 "Alcmene" sting operation that identified an NGO-linked migrant-smuggling network from Turkey</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/hellenic-police/special-services/hellenic-police-intelligence-division-hpid/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">HPiD</span>
+      <span class="card-name">Hellenic Police Intelligence Division</span>
+      <span class="card-role">Central intelligence hub of the Hellenic Police focused mainly on serious and organised crime and terrorism — coordinates regional intelligence structures nationwide and operates Greece's Passenger Information Unit (PIU) for PNR data under EU Directive 2016/681</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.aade.gr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ΑΑΔΕ</span>
+      <span class="card-name">Independent Authority for Public Revenue (incorporating the former SDOE financial-crime function)</span>
+      <span class="card-role">Customs and tax enforcement — smuggling, VAT fraud and excise evasion, with dedicated economic-crime investigation units feeding cases to DAOE and the Athens prosecutor's office</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Anti-Trafficking Unit (within DAOE)</span>
+      <span class="card-name">Subdivision of Human Trafficking and Illegal Items Trafficking</span>
+      <span class="card-role">Maintains a 25-officer unit in Athens and a 12-officer unit in Thessaloniki, plus 14 smaller municipal units nationwide, investigating sex and labour trafficking and vice crimes — identified 84 victims in 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Cybercrime Prosecution Directorate</span>
+      <span class="card-name">Διεύθυνση Δίωξης Ηλεκτρονικού Εγκλήματος</span>
+      <span class="card-role">Transformed into a Special Security Service under the 2025 reorganisation — investigates cyber-enabled OC and online trafficking-adjacent offences alongside DAOE</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">cybercrime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- REGIONAL POLICE DIRECTORATES -->
+<div class="section tier-state">
+  <div class="section-label">
+    Regional level — 12 General Regional Police Directorates + Attica &amp; Thessaloniki
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">2 sectors, 12+2 directorates</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GADA</span>
+      <span class="card-name">General Police Directorate of Attica</span>
+      <span class="card-role">Athens metropolitan region — by far the highest OC and trafficking caseload; hosts DAOE's headquarters even though DAOE itself reports straight to the Chief of Police</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GADT</span>
+      <span class="card-name">General Police Directorate of Thessaloniki</span>
+      <span class="card-role">Second city and the seat of DAOE's Subdivision of Organised Crime of Northern Greece — heavy OC and drug-trafficking caseload near the Bulgarian and North Macedonian borders</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GRPD Crete</span>
+      <span class="card-name">General Regional Police Directorate of Crete</span>
+      <span class="card-role">Upgraded to a full DAOE Subdivision after the October 2025 Vorizia double homicide, linked to a long-standing vendetta — handles vendetta-related violence, illegal firearms and livestock theft distinctive to the island's rural OC profile</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GRPD East Macedonia &amp; Thrace</span>
+      <span class="card-name">General Regional Police Directorate of East Macedonia and Thrace</span>
+      <span class="card-role">Covers the Evros land border with Turkey — the single most exposed crossing point for irregular migration and trafficking into the EU, supported by an extended border fence</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GRPD North Aegean</span>
+      <span class="card-name">General Regional Police Directorate of the North Aegean (Lesvos, Chios, Samos)</span>
+      <span class="card-role">Front-line islands for sea-crossing migrant smuggling from the Turkish coast — close operational ties with the Hellenic Coast Guard and Frontex</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.astynomia.gr/?lang=en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GRPD South Aegean</span>
+      <span class="card-name">General Regional Police Directorate of the South Aegean (Rhodes, Dodecanese)</span>
+      <span class="card-role">Secondary Aegean smuggling corridor — recent cases include the arrest of hotel owners on Rhodes for facilitating migrant smuggling from Turkey</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- VICTIM SUPPORT / NGO COORDINATION -->
+<div class="section tier-state">
+  <div class="section-label">
+    Victim support &amp; coordination bodies
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.antitrafficking.gr" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ONRHT</span>
+      <span class="card-name">Office of the National Rapporteur on Human Trafficking</span>
+      <span class="card-role">Coordinates government-wide anti-trafficking efforts and drafts the National Action Plan — has operated with an "acting" rather than permanent rapporteur since 2021, a resourcing gap flagged repeatedly in U.S. State Department trafficking reports</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">coordination</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gsfpop.gov.gr/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">GSEHR / EKKA</span>
+      <span class="card-name">General Secretariat for Equality &amp; Human Rights / National Centre for Social Solidarity</span>
+      <span class="card-role">Operate the shelters, counselling centres and emergency support services for THB victims — GSEHR runs 20 shelters and 44 counselling centres; EKKA runs two long-term shelters and an emergency shelter, though both report capacity gaps</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">victim support</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by DAOE's Intelligence and Operations Subdivision and HPiD — link analysis, timelines, and entity charting for OC and trafficking-network mapping across the new centralised reporting structure</span>
+    </div>
+    <div class="tool-item">
+      <strong>POLIS &amp; PNR/PIU systems</strong>
+      <span>POLIS is the Hellenic Police's central case-management platform; HPiD's Passenger Information Unit separately processes airline PNR data under EU Directive 2016/681 for serious-crime and terrorism detection, feeding both DAOE and HPiD</span>
+    </div>
+    <div class="tool-item">
+      <strong>Maritime &amp; border surveillance fusion</strong>
+      <span>Hellenic Coast Guard and Frontex combine vessel-tracking, aerial surveillance and the Evros border-fence sensor network with DAOE's Human Trafficking Subdivision casework for smuggling-network reconstruction</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

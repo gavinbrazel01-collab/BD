@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>England &amp; Wales — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px; display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+  .tag-cyber{ background: #E0F2F1; color: #004D40; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-nca   .card-abbr { color: #993C1D; }
+  .tier-rocu  .card-abbr { color: #1B6B3A; }
+  .tier-spec  .card-abbr { color: #854F0B; }
+  .tier-prox  .card-abbr { color: #555; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>England &amp; Wales — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). The NCA leads at the national level, supported by a network of 10 Regional Organised Crime Units (ROCUs) across England and Wales, local police forces, and specialist partner agencies.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">UK cooperates with Europol post-Brexit under a specialised agreement. NCA led Op Venetic (EncroChat) and Op Cronos (LockBit) jointly with Europol</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">UK NCB hosted within the NCA — red notices, diffusions, fugitive tracking and cross-border intelligence sharing</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/how-we-work/international-liaison-officers" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">MAOC-N</span>
+      <span class="card-name">Maritime Analysis and Operations Centre — Narcotics</span>
+      <span class="card-role">Lisbon-based maritime drug interdiction partnership. UK is a founding member alongside France, Spain, Portugal, Ireland, Italy and the Netherlands. NCA-led at UK level</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">maritime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GOVERNMENT / MINISTERIAL -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Ministerial &amp; prosecution level
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Government</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/uk-home-office" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Home Office</span>
+      <span class="card-name">HM Home Office</span>
+      <span class="card-role">Ministerial oversight of NCA, Border Force, and national OC strategy. Publishes the Serious &amp; Organised Crime Strategy 2023–2028 and the National Strategic Assessment</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/crown-prosecution-service" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">CPS</span>
+      <span class="card-name">Crown Prosecution Service</span>
+      <span class="card-role">Prosecutes all NCA, ROCU and police OC cases in England &amp; Wales. Has dedicated Organised Crime and Counter Terrorism Division (OCCTD)</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/hmrc" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">HMRC — FIS</span>
+      <span class="card-name">HM Revenue &amp; Customs — Fraud Investigation Service</span>
+      <span class="card-role">Investigates tax fraud, money laundering and financial crime linked to OC. Works alongside NCA on asset recovery and illicit finance. Customs powers at borders</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NCA -->
+<div class="section tier-nca">
+  <div class="section-label">
+    National Crime Agency (NCA) — national lead
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">National</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/national-crime-agency" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCA</span>
+      <span class="card-name">National Crime Agency</span>
+      <span class="card-role">UK's lead agency against SOC — £835m budget (2024–25), 6,200+ officers, liaison in 50+ countries. Tasking and coordination authority over all ROCUs and police. Houses NCCU, CEOP and the UK NCB (INTERPOL)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/national-cyber-crime-unit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NCCU</span>
+      <span class="card-name">National Cyber Crime Unit (within NCA)</span>
+      <span class="card-role">Leads on cybercrime with OC nexus — dark web drug markets, EncroChat/Sky ECC exploitation, ransomware (Op Cronos / LockBit), cybercrime as OC enabler</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/ceop-education" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">CEOP</span>
+      <span class="card-name">Child Exploitation and Online Protection Command (within NCA)</span>
+      <span class="card-role">Investigates child sexual exploitation and trafficking of minors — online and offline. Works with ROCU child abuse units and international partners</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-cyber">online exploitation</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/modern-slavery-and-human-trafficking" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NCA — Modern Slavery &amp; HT</span>
+      <span class="card-name">NCA Modern Slavery and Human Trafficking Unit</span>
+      <span class="card-role">Leads national intelligence picture on modern slavery and HT. Coordinates with UKHTC (UK Human Trafficking Centre), ROCUs, Border Force and NGOs</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/drug-trafficking" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NCA — Drugs</span>
+      <span class="card-name">NCA Drug Trafficking Command</span>
+      <span class="card-role">Targets the highest-harm drug supply networks — cocaine, heroin, synthetic drugs, county lines. Led Op Venetic (EncroChat, 746 arrests, 2 tonnes drugs seized)</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/economic-crime" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NCA — Economic Crime</span>
+      <span class="card-name">NCA Economic Crime Command</span>
+      <span class="card-role">Money laundering, asset recovery, illicit finance. Led Op Destabilise (2024) — dismantled two Russian money laundering networks linked to OC and sanctions evasion</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ROCU NETWORK -->
+<div class="section tier-rocu">
+  <div class="section-label">
+    Regional Organised Crime Units (ROCU network — 10 units across England &amp; Wales)
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Regional</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/north-west-regional-organised-crime-unit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NWROCU</span>
+      <span class="card-name">North West Regional Organised Crime Unit</span>
+      <span class="card-role">Warrington — covers Greater Manchester, Cheshire, Lancashire, Merseyside and Cumbria. Major drugs and OC caseload; port of Liverpool interdiction</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://uk.linkedin.com/company/north-east-regional-organised-crime-unit-nerocu" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NEROCU</span>
+      <span class="card-name">North East Regional Organised Crime Unit</span>
+      <span class="card-role">Covers Northumbria, Durham and Cleveland. Significant heroin and modern slavery caseload; heroin seizures up 1,293% across ROCU network 2021–23</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/yorkshire-and-humberside-rocu-yhrocu/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">YHROCU</span>
+      <span class="card-name">Yorkshire &amp; Humberside Regional Organised Crime Unit</span>
+      <span class="card-role">Covers South, West and North Yorkshire and Humberside. Major county lines and OC network investigations; port of Hull</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/east-midlands-special-operations-unit-emsou/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">EMSOU</span>
+      <span class="card-name">East Midlands Special Operations Unit</span>
+      <span class="card-role">Covers Leicestershire, Nottinghamshire, Derbyshire, Northamptonshire and Lincolnshire. OC, drugs, modern slavery and firearms</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/west-midlands-regional-organised-crime-unit-rocuwm/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ROCUWM</span>
+      <span class="card-name">West Midlands Regional Organised Crime Unit</span>
+      <span class="card-role">Covers West Mercia, Staffordshire, West Midlands and Warwickshire. Op Cornflour (SEROCU/ROCUWM investment fraud case, 12 sentenced). Hosts RCCU West Midlands</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-cyber">cybercrime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/south-east-rocu-serocu/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SEROCU</span>
+      <span class="card-name">South East Regional Organised Crime Unit</span>
+      <span class="card-role">Covers Kent, Surrey, Sussex and Thames Valley. Key cross-Channel OC and HT gateway; Dover port and Channel Tunnel corridor</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/eastern-region-special-operations-unit-ersou/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ERSOU</span>
+      <span class="card-name">Eastern Region Special Operations Unit</span>
+      <span class="card-role">Covers Bedfordshire, Cambridgeshire, Essex, Hertfordshire, Norfolk and Suffolk. Port of Felixstowe — major cocaine import point</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/south-west-regional-organised-crime-unit-swrocu/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SWROCU</span>
+      <span class="card-name">South West Regional Organised Crime Unit</span>
+      <span class="card-role">Covers Avon &amp; Somerset, Devon &amp; Cornwall, Dorset, Gloucestershire and Wiltshire. Op Cronos (LockBit) run with SWRCCU. Drug routes via south coast ports</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-cyber">cybercrime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.rocu.police.uk/our-rocus/tarian-regional-organised-crime-unit/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">TARIAN</span>
+      <span class="card-name">Tarian — Wales Regional Organised Crime Unit</span>
+      <span class="card-role">Covers all four Welsh police forces. OC, drugs, modern slavery and firearms. Bilingual operational capability (English/Welsh)</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST / PARTNER AGENCIES -->
+<div class="section tier-spec">
+  <div class="section-label">
+    Specialist &amp; partner agencies
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">National specialists</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/metpoliceuk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Metropolitan Police</span>
+      <span class="card-name">Metropolitan Police Service — Specialist Crime</span>
+      <span class="card-role">London-based; national responsibility for several specialist units. Specialist Crime Command covers OC, gangs, modern slavery and drugs in London — largest single force OC caseload</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/colpfraud" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">City of London Police</span>
+      <span class="card-name">City of London Police — National Lead for Fraud</span>
+      <span class="card-role">National lead force for fraud and economic crime. Houses Action Fraud (national reporting centre), NFIB and IFED. OC financial crime nexus investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">fraud lead</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/how-we-work/border-policing" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Border Force / NCA Border Policing</span>
+      <span class="card-name">UK Border Force + NCA Border Policing Command</span>
+      <span class="card-role">Drug and HT interdiction at ports and airports. NCA Border Policing embeds officers at Heathrow, Dover, Folkestone and major freight hubs</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/national-cyber-security-centre/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCSC</span>
+      <span class="card-name">National Cyber Security Centre (GCHQ)</span>
+      <span class="card-role">Technical cyber threat intelligence — supports NCA and ROCU cyber units on OC digital infrastructure, encrypted comms and dark-web enabled crime</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gov.uk/government/organisations/serious-fraud-office" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SFO</span>
+      <span class="card-name">Serious Fraud Office</span>
+      <span class="card-role">Investigates and prosecutes complex fraud, bribery and corruption — including OC financial crime. Independent of CPS and NCA</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.gov.uk/government/organisations/financial-intelligence-unit" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UKFIU</span>
+      <span class="card-name">UK Financial Intelligence Unit (within NCA)</span>
+      <span class="card-role">Receives and analyses Suspicious Activity Reports (SARs) — gateway intelligence on OC money laundering flows. Processes 900,000+ SARs annually</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Standard across NCA, all 10 ROCUs and most territorial forces — link analysis, timelines, entity network charting for OC case management</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC / AN0M data</strong>
+      <span>Op Venetic (EncroChat, 2020) transformed UK OC investigations — NCA and ROCUs continue to exploit intercept data. Analysed via i2 and bespoke platforms</span>
+    </div>
+    <div class="tool-item">
+      <strong>PND / HOLMES 2 / CRIMINT</strong>
+      <span>Police National Database, HOLMES 2 (major incident), CRIMINT (Met intelligence). National intelligence shared via NCA's intelligence hub and ROCU JTAC nodes</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. England &amp; Wales only; Scottish agencies (Police Scotland, SCDEA) and Northern Ireland (PSNI/ONISC) not included. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

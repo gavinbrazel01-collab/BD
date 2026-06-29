@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Austria — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-fed   .card-abbr { color: #534AB7; }
+  .tier-bk    .card-abbr { color: #993C1D; }
+  .tier-state .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Austria — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — Austria contributes to EMPACT operations and joint investigation teams</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Coordinates cross-border prosecutions; Austria's national member based in The Hague</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">judicial</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">Austria's NCB is housed within the BK — red notices, fugitive tracking, global database access</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- VIENNA-BASED INTERNATIONAL BODIES -->
+<div class="section tier-intl">
+  <div class="section-label">
+    Vienna-based international bodies
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">Vienna UN hub</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.linkedin.com/company/unodc" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">UNODC</span>
+      <span class="card-name">UN Office on Drugs and Crime (headquartered in Vienna)</span>
+      <span class="card-role">Global policy, research, and capacity building on drug trafficking, OC, and human trafficking</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.unodc.org/unodc/en/organized-crime/intro.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">UNTOC / UNODC Vienna</span>
+      <span class="card-name">UN Convention against Transnational Organized Crime (Palermo Convention)</span>
+      <span class="card-role">Austria is a signatory state — UNODC Vienna hosts the secretariat and review mechanism</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">treaty body</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL COORDINATION -->
+<div class="section tier-fed">
+  <div class="section-label">
+    Federal level — ministries &amp; prosecution
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Bundesebene</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/innenministerium" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BMI</span>
+      <span class="card-name">Bundesministerium für Inneres</span>
+      <span class="card-role">Federal Ministry of Interior — oversees BK, DSN, Bundespolizei and all security policy</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bmj-bundesministerium-fuer-justiz" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BMJ</span>
+      <span class="card-name">Bundesministerium für Justiz</span>
+      <span class="card-role">Federal Ministry of Justice — criminal law framework, oversees prosecution authorities</span>
+      <div class="card-tags">
+        <span class="tag tag-int">judicial</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.justiz.gv.at/wksta/wirtschafts-und-korruptionsstaatsanwaltschaft.312.de.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">WKStA</span>
+      <span class="card-name">Wirtschafts- und Korruptionsstaatsanwaltschaft</span>
+      <span class="card-role">Specialist prosecutor for major economic crime and corruption — OC financial crime nexus</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FEDERAL INVESTIGATION AGENCIES -->
+<div class="section tier-bk">
+  <div class="section-label">
+    Federal investigation agencies
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">Bundesbehörden</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://at.linkedin.com/company/bundeskriminalamt-%C3%B6sterreich" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BK</span>
+      <span class="card-name">Bundeskriminalamt Österreich (Criminal Intelligence Service Austria)</span>
+      <span class="card-role">Lead national criminal agency — OC, drugs, human trafficking, violent crime, white-collar crime. Houses INTERPOL &amp; Europol NCB.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/direktion-staatsschutz-und-nachrichtendienst" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DSN</span>
+      <span class="card-name">Direktion Staatsschutz und Nachrichtendienst</span>
+      <span class="card-role">Domestic intelligence &amp; state protection — OC with extremist or state-security dimension. Replaced BVT in 2021.</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/bundesamt-zur-korruptionspr%C3%A4vention-und-korruptionsbek%C3%A4mpfung" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">BAK</span>
+      <span class="card-name">Bundesamt zur Korruptionsprävention und Korruptionsbekämpfung</span>
+      <span class="card-role">Federal anti-corruption authority — investigative partner to WKStA for corruption and OC financial flows</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">prevention</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- BK SPECIALIST UNITS -->
+<div class="section tier-bk">
+  <div class="section-label">
+    BK specialist divisions (within Bundeskriminalamt)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">within BK</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.bundeskriminalamt.at/en/301/start.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Dept 3.1 — Organised crime</span>
+      <span class="card-name">BK Sub-Department 3.1</span>
+      <span class="card-role">OC units by region: DACH, Balkans, Turkey/Asia, Eurasia, Southern Europe/Americas, vehicle crime</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bundeskriminalamt.at/en/302/start.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Dept 3.3 — Drug crime</span>
+      <span class="card-name">BK Sub-Department 3.3</span>
+      <span class="card-role">Heroin, cocaine, cannabis; synthetic drugs; dark-web &amp; postal drug trafficking</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bundeskriminalamt.at/en/303/start.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Dept 3.4 — Human trafficking</span>
+      <span class="card-name">BK Sub-Department 3.4</span>
+      <span class="card-role">Trafficking in human beings (THB) and human smuggling — also runs Joint Operational Office (JOO)</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- STATE / REGIONAL LEVEL -->
+<div class="section tier-state">
+  <div class="section-label">
+    State (Länder) level — Landespolizeidirektionen
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">9 Bundesländer</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/polizei-wien" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">LPD Wien</span>
+      <span class="card-name">Landespolizeidirektion Wien</span>
+      <span class="card-role">Largest LPD — primary OC, HT and drug caseload; Vienna is a major Balkan Route transit hub</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.polizei.gv.at/noe/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LPD Niederösterreich</span>
+      <span class="card-name">Landespolizeidirektion Niederösterreich</span>
+      <span class="card-role">Surrounds Vienna — key OC and smuggling investigations on approach routes</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.polizei.gv.at/stmk/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LPD Steiermark</span>
+      <span class="card-name">Landespolizeidirektion Steiermark</span>
+      <span class="card-role">Graz — Balkan Route border proximity, significant OC and smuggling activity</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.polizei.gv.at/ooe/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LPD Oberösterreich</span>
+      <span class="card-name">Landespolizeidirektion Oberösterreich</span>
+      <span class="card-role">Linz — WKStA branch office here; major economic crime and OC investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.polizei.gv.at/sbg/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LPD Salzburg</span>
+      <span class="card-name">Landespolizeidirektion Salzburg</span>
+      <span class="card-role">Major transit corridor — drug and OC investigations across Alpine routes</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.polizei.gv.at/tir/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">LPD Tirol</span>
+      <span class="card-name">Landespolizeidirektion Tirol</span>
+      <span class="card-role">Innsbruck — Brenner corridor drug and HT investigations; Italian OC links</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTION & CUSTOMS -->
+<div class="section tier-state">
+  <div class="section-label">
+    State prosecution &amp; customs enforcement
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.justiz.gv.at/home/gerichte-und-staatsanwaltschaften/staatsanwaltschaften" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Staatsanwaltschaften (9 Länder)</span>
+      <span class="card-name">State prosecution offices — one per Bundesland</span>
+      <span class="card-role">Direct all criminal investigations; warrant authority; work alongside LPD Kripo units. Vienna SA handles most major OC cases.</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.bmf.gv.at/themen/zoll.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Zoll / BMF</span>
+      <span class="card-name">Austrian Customs (Bundesministerium für Finanzen)</span>
+      <span class="card-role">Drug smuggling at borders, financial crime, money laundering interdiction — works closely with BK</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by BK and LPD criminal police (Kripo) units — link analysis, timelines, entity charting for OC network mapping</span>
+    </div>
+    <div class="tool-item">
+      <strong>EKIS / SIS II / INPOL link</strong>
+      <span>EKIS is Austria's national police database; connected to the EU Schengen Information System and German INPOL for cross-border lookups</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC data</strong>
+      <span>BK and LPD units have exploited encrypted-phone intercepts — data fed into i2 for OC network reconstruction</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

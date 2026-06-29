@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>European OC Agencies — Country Index</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    max-width: 960px;
+    margin: 0 auto 0.75rem;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+    color: #73726c;
+  }
+
+  /* ── Search bar ── */
+  .search-wrap {
+    max-width: 960px;
+    margin: 1.5rem auto 2rem;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #ffffff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 10px;
+    color: #1a1a18;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input::placeholder { color: #aaa9a4; }
+  .search-wrap input:focus { border-color: #888780; }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-num {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #888780;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-divider {
+    width: 0.5px;
+    background: #d3d1c7;
+    align-self: stretch;
+  }
+
+  /* ── Section ── */
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Country grid ── */
+  .grid { display: grid; gap: 10px; }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .country-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 14px 16px 12px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    position: relative;
+    color: inherit;
+  }
+
+  .country-card:hover {
+    border-color: #888780;
+    background: #faf9f6;
+    transform: translateY(-1px);
+  }
+
+  .country-card.hidden { display: none; }
+
+  .card-flag {
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a18;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-note { background: #F5F4F0; color: #73726c; border: 0.5px solid #d3d1c7; }
+
+  .card-arrow {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 13px;
+    color: #aaa9a4;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .country-card:hover .card-arrow { opacity: 1; }
+
+  /* ── Legend ── */
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  /* ── Empty state ── */
+  .empty-state {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    color: #888780;
+    font-size: 14px;
+    display: none;
+  }
+
+  /* ── Footer ── */
+  footer {
+    max-width: 960px;
+    margin: 2.5rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid #d3d1c7;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 700px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .stats-bar { gap: 16px; }
+    .stat-divider { display: none; }
+  }
+
+  @media (max-width: 400px) {
+    .grid-4, .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>European OC agencies — country index</h1>
+  <p>Investigation jurisdiction for drug trafficking, organised crime and human trafficking across Europe.</p>
+</div>
+
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="Search countries…" autocomplete="off" spellcheck="false">
+</div>
+
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">27</span>
+    <span class="stat-label">Countries covered</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <span class="stat-num">4</span>
+    <span class="stat-label">UK jurisdictions</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Crime categories per page</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <span class="stat-num">200+</span>
+    <span class="stat-label">Agencies documented</span>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="tag tag-oc">OC</span> Organised crime</span>
+  <span class="legend-item"><span class="tag tag-drug">Drug</span> Drug trafficking</span>
+  <span class="legend-item"><span class="tag tag-ht">HT</span> Human trafficking</span>
+  <span class="legend-item"><span class="tag tag-fin">Fin</span> Financial crime</span>
+</div>
+
+<!-- EU MEMBER STATES -->
+<div class="section" id="section-eu">
+  <div class="section-label">
+    EU member states
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">Europol + Eurojust partners</span>
+  </div>
+  <div class="grid grid-4" id="grid-eu">
+
+    <a class="country-card" href="austria_oc_agencies.html" data-name="austria">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇦🇹</span>
+      <span class="card-name">Austria</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="belgium_oc_agencies.html" data-name="belgium">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇧🇪</span>
+      <span class="card-name">Belgium</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="croatia_oc_agencies.html" data-name="croatia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇭🇷</span>
+      <span class="card-name">Croatia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="czech_republic_oc_agencies.html" data-name="czech republic czechia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇨🇿</span>
+      <span class="card-name">Czech Republic</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="estonia_oc_agencies.html" data-name="estonia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇪🇪</span>
+      <span class="card-name">Estonia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="finland_oc_agencies.html" data-name="finland">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇫🇮</span>
+      <span class="card-name">Finland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="france_oc_agencies.html" data-name="france">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇫🇷</span>
+      <span class="card-name">France</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="germany_oc_agencies (1).html" data-name="germany deutschland">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇩🇪</span>
+      <span class="card-name">Germany</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="greece_oc_agencies.html" data-name="greece">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇬🇷</span>
+      <span class="card-name">Greece</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="hungary_oc_agencies.html" data-name="hungary">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇭🇺</span>
+      <span class="card-name">Hungary</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="italy_oc_agencies.html" data-name="italy italia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇮🇹</span>
+      <span class="card-name">Italy</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="latvia_oc_agencies.html" data-name="latvia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇱🇻</span>
+      <span class="card-name">Latvia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="lithuania_oc_agencies.html" data-name="lithuania">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇱🇹</span>
+      <span class="card-name">Lithuania</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="Netherlands_oc_agencies.html" data-name="netherlands holland">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇳🇱</span>
+      <span class="card-name">Netherlands</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="poland_oc_agencies.html" data-name="poland polska">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇵🇱</span>
+      <span class="card-name">Poland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="portugal_oc_agencies.html" data-name="portugal">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇵🇹</span>
+      <span class="card-name">Portugal</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="romania_oc_agencies.html" data-name="romania">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇷🇴</span>
+      <span class="card-name">Romania</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="slovenia_oc_agencies.html" data-name="slovenia">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇸🇮</span>
+      <span class="card-name">Slovenia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="spain_oc_agencies.html" data-name="spain españa">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇪🇸</span>
+      <span class="card-name">Spain</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="sweden_oc_agencies.html" data-name="sweden sverige">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇸🇪</span>
+      <span class="card-name">Sweden</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NON-EU EUROPEAN -->
+<div class="section" id="section-noeu">
+  <div class="section-label">
+    Non-EU European countries
+    <span class="tier-badge" style="background:#EAF3DE;color:#27500A;">Europol associate / partner</span>
+  </div>
+  <div class="grid grid-4" id="grid-noeu">
+
+    <a class="country-card" href="norway_oc_agencies.html" data-name="norway norge">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇳🇴</span>
+      <span class="card-name">Norway</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="serbia_oc_agencies.html" data-name="serbia srbija">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇷🇸</span>
+      <span class="card-name">Serbia</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="switzerland_oc_agencies.html" data-name="switzerland schweiz suisse">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇨🇭</span>
+      <span class="card-name">Switzerland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- UK JURISDICTIONS -->
+<div class="section" id="section-uk">
+  <div class="section-label">
+    United Kingdom — separate jurisdictions
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">post-Brexit Europol partner</span>
+  </div>
+  <div class="grid grid-4" id="grid-uk">
+
+    <a class="country-card" href="england_oc_agencies.html" data-name="england uk united kingdom britain">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+      <span class="card-name">England &amp; Wales</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+        <span class="tag tag-fin">Fin</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="scotland_oc_agencies.html" data-name="scotland uk britain">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+      <span class="card-name">Scotland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+    <a class="country-card" href="northern_ireland_oc_agencies.html" data-name="northern ireland uk britain">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇬🇧</span>
+      <span class="card-name">Northern Ireland</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">OC</span>
+        <span class="tag tag-drug">Drug</span>
+        <span class="tag tag-ht">HT</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- POOR BELGIUM NOTE -->
+<div class="section" id="section-misc">
+  <div class="section-label">
+    Additional files
+    <span class="tier-badge" style="background:#F1EFE8;color:#444441;">misc</span>
+  </div>
+  <div class="grid grid-4" id="grid-misc">
+
+    <a class="country-card" href="Poor Belgium_oc_agencies.html" data-name="poor belgium">
+      <span class="card-arrow">↗</span>
+      <span class="card-flag">🇧🇪</span>
+      <span class="card-name">Belgium (alt)</span>
+      <div class="card-tags">
+        <span class="tag tag-note">alt version</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="empty-state" id="empty-state">
+  No countries match "<span id="empty-query"></span>" — try a different spelling.
+</div>
+
+<footer>
+  For internal reference only — agency information current as of June 2026.<br>
+  Each page covers investigation jurisdiction for drug trafficking, organised crime, human trafficking and financial crime, with LinkedIn and technology linking details.
+</footer>
+
+<script>
+  const search = document.getElementById('search');
+  const emptyState = document.getElementById('empty-state');
+  const emptyQuery = document.getElementById('empty-query');
+  const sections = ['eu', 'noeu', 'uk', 'misc'];
+
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    let totalVisible = 0;
+
+    sections.forEach(sec => {
+      const grid = document.getElementById('grid-' + sec);
+      const section = document.getElementById('section-' + sec);
+      const cards = grid.querySelectorAll('.country-card');
+      let sectionVisible = 0;
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const match = !q || name.includes(q);
+        card.classList.toggle('hidden', !match);
+        if (match) sectionVisible++;
+      });
+
+      section.style.display = sectionVisible === 0 ? 'none' : '';
+      totalVisible += sectionVisible;
+    });
+
+    if (totalVisible === 0 && q) {
+      emptyState.style.display = 'block';
+      emptyQuery.textContent = search.value.trim();
+    } else {
+      emptyState.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

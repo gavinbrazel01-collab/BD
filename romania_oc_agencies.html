@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romania — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+  }
+
+  .page-header p { font-size: 14px; color: #73726c; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: #5f5e5a;
+    color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag-oc   { background: #FAECE7; color: #712B13; }
+  .tag-drug { background: #E6F1FB; color: #0C447C; }
+  .tag-ht   { background: #EEEDFE; color: #3C3489; }
+  .tag-fin  { background: #EAF3DE; color: #27500A; }
+  .tag-int  { background: #F1EFE8; color: #444441; }
+  .tag-i2   { background: #FAEEDA; color: #633806; }
+
+  .tier-intl   .card-abbr { color: #185FA5; }
+  .tier-prosec .card-abbr { color: #534AB7; }
+  .tier-police .card-abbr { color: #993C1D; }
+  .tier-county .card-abbr { color: #854F0B; }
+
+  .tools-box {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 0.5px dashed #b4b2a9;
+    padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #73726c;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Romania — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists).</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; EU level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">EU OC intelligence hub — DIICOT ran 26 JITs with European counterparts in 2024 (including 4 new sex-trafficking JITs); DCCO participates in EMPACT drug and HT priorities; hackathon on online HT in 2024</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/eurojust" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Eurojust</span>
+      <span class="card-name">European Union Agency for Criminal Justice Cooperation</span>
+      <span class="card-role">Judicial coordination for cross-border OC prosecutions — Romanian national desk supports DIICOT joint investigation teams in HT and drug trafficking cases across EU member states</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.interpol.int/Who-we-are/Member-countries/Europe/ROMANIA" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">INTERPOL NCB Bucharest</span>
+      <span class="card-name">INTERPOL National Central Bureau — Romania</span>
+      <span class="card-role">36-officer bureau within the International Police Cooperation Centre, under the Inspector General — global intelligence relay for drugs, HT, fugitives, cybercrime and financial crime along Balkan Route</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PROSECUTORIAL AGENCIES -->
+<div class="section tier-prosec">
+  <div class="section-label">
+    Prosecutorial agencies (Public Ministry)
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">prosecutor-led</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/diicot" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DIICOT</span>
+      <span class="card-name">Direcția de Investigare a Infracțiunilor de Criminalitate Organizată și Terorism</span>
+      <span class="card-role">Lead national OC prosecutor, est. 2004 — five specialist services: OC networks, drug trafficking, economic &amp; financial crime, cybercrime, and terrorism; subordinate to the Prosecutor General attached to the High Court of Cassation and Justice; territorial offices in all regions</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-int">prosecution</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/diicot" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DIICOT — Anti-trafficking &amp; Financial Units</span>
+      <span class="card-name">DIICOT Dedicated Anti-Trafficking Unit + Financial Investigations Unit</span>
+      <span class="card-role">Two specialist sub-units within DIICOT: the anti-trafficking unit supports regional prosecutors and training; the financial investigations unit (est. 2023) traces, freezes and seizes proceeds from OC and HT — cooperates with ANABI internationally</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/dna-romania" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DNA</span>
+      <span class="card-name">Direcția Națională Anticorupție (National Anti-Corruption Directorate)</span>
+      <span class="card-role">Sister agency to DIICOT — investigates and prosecutes high-level public corruption (MPs, mayors, judges); addresses corruption that enables OC infiltration of border controls, customs and procurement; successfully prosecuted senior officials</span>
+      <div class="card-tags">
+        <span class="tag tag-int">anti-corruption</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NATIONAL POLICE UNITS -->
+<div class="section tier-police">
+  <div class="section-label">
+    National police units (Ministry of Internal Affairs)
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">national jurisdiction</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://politiaromana.ro/en/romanian-police/central-units/combating-organized-crime-directorate" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DCCO</span>
+      <span class="card-name">Direcția de Combatere a Criminalității Organizate (Directorate for Combating Organised Crime)</span>
+      <span class="card-role">Primary national police OC unit — dedicated teams for HT, drug trafficking and financial investigations; financial investigations unit est. 2023; nationwide anti-trafficking officer teams; works alongside DIICOT on all major OC cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://politiaromana.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">IGPR</span>
+      <span class="card-name">Inspectoratul General al Poliției Române (General Inspectorate of the Romanian Police)</span>
+      <span class="card-role">Central command of all Romanian Police — manages 41 county inspectorates and the Bucharest General Directorate; coordinates DCCO and DIF; houses the INTERPOL NCB; investigates serious OC and financial crime referred from the High Court prosecutor's office</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">coordination</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://politiaromana.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">DIF</span>
+      <span class="card-name">Direcția de Investigare a Fraudelor (General Directorate for Investigating Frauds)</span>
+      <span class="card-role">National fraud investigation directorate within IGPR — large-scale financial fraud, tax evasion, banking crime, EU funds fraud; provides financial investigation support to DCCO and DIICOT cases</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.sri.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">SRI</span>
+      <span class="card-name">Serviciul Român de Informații (Romanian Intelligence Service)</span>
+      <span class="card-role">Domestic intelligence service — OC with national security dimension, foreign criminal network infiltration, terrorism nexus; uses SIGINT, OSINT and HUMINT; feeds intelligence to DIICOT and DCCO on serious OC cases</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.politiadefrontiera.ro/en/main/index.html" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">IGPF</span>
+      <span class="card-name">Inspectoratul General al Poliției de Frontieră (General Inspectorate of the Border Police)</span>
+      <span class="card-role">Border security across Romania's extensive land, sea and river borders — intercepts Balkan Route heroin flows, migrant smuggling, arms trafficking; Port of Constanța maritime narcotics interdiction; Frontex joint operations partner</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.anabi.just.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ANABI</span>
+      <span class="card-name">Agenția Națională de Administrare a Bunurilor Indisponibilizate (National Agency for the Management of Seized Assets)</span>
+      <span class="card-role">Asset recovery agency — traces and manages seized criminal assets nationally and internationally; operates the national fund of confiscated assets (allocated €65,000 to victim NGOs in 2024); supports DIICOT and DCCO financial investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- COUNTY / REGIONAL POLICE -->
+<div class="section tier-county">
+  <div class="section-label">
+    County police inspectorates — key OC regions
+    <span class="tier-badge" style="background:#FAEEDA;color:#633806;">41 județe + Bucharest</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DGPMB — Bucharest</span>
+      <span class="card-name">Direcția Generală de Poliție a Municipiului București</span>
+      <span class="card-role">Capital city police — largest OC, HT and financial crime caseload; DCCO Bucharest office leads trafficking dismantlement operations; hosts INTERPOL NCB Bucharest; 'loverboy' and online HT recruitment cases</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">IPJ Constanța</span>
+      <span class="card-name">Inspectoratul de Poliție Județean Constanța</span>
+      <span class="card-role">Port of Constanța — Romania's main maritime drug entry point; cocaine hidden in food shipments (Balkan Route and Black Sea), Balkan Route heroin, arms trafficking; corrupt customs official cases; works with Border Police and DIICOT maritime units</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">IPJ Cluj</span>
+      <span class="card-name">Inspectoratul de Poliție Județean Cluj</span>
+      <span class="card-role">Northwest hub — significant drug trafficking, OC financial crime and HT cases; gateway for transit networks moving victims and goods toward Hungary and Western Europe; DIICOT Cluj territorial office</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">IPJ Timiș</span>
+      <span class="card-name">Inspectoratul de Poliție Județean Timiș (Timișoara)</span>
+      <span class="card-role">Western border with Serbia and Hungary — Balkan Route drug transit, migrant smuggling northbound; significant HT recruitment networks targeting economically disadvantaged communities; DIICOT Timișoara territorial office</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">IPJ Iași</span>
+      <span class="card-name">Inspectoratul de Poliție Județean Iași</span>
+      <span class="card-role">Eastern border with Moldova — migrant smuggling, cross-border OC, HT recruitment in Moldova–Romania corridor; DIICOT Iași territorial office covers Moldova border region</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/politia-romana" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">IPJ Dolj / Mehedinți</span>
+      <span class="card-name">Southwest county inspectorates (Craiova region)</span>
+      <span class="card-role">Danube border crossing points with Bulgaria and Serbia — Balkan Route heroin and cocaine transit; arms smuggling concealed in vehicles; DCCO anti-trafficking operations in rural recruitment networks</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FINANCIAL & OVERSIGHT -->
+<div class="section tier-county">
+  <div class="section-label">
+    Financial intelligence &amp; fiscal oversight
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.onpcsb.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ONPCSB</span>
+      <span class="card-name">Oficiul Național de Prevenire și Combatere a Spălării Banilor (National Office for Prevention and Control of Money Laundering)</span>
+      <span class="card-role">Romanian FIU — receives suspicious transaction reports from banks and financial institutions; channels AML intelligence to DIICOT, DCCO and ANABI; monitors criminal reinvestment of OC profits into real estate and businesses</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.anaf.ro/en" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">ANAF</span>
+      <span class="card-name">Agenția Națională de Administrare Fiscală (National Agency for Fiscal Administration)</span>
+      <span class="card-role">Tax authority with judicial police powers — enforces confiscation orders, seizes and realises criminal assets on behalf of courts; investigates large-scale tax evasion linked to OC; 16 tax specialists seconded to DIICOT financial investigations</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by DIICOT, DCCO and key county inspectorates — entity network mapping, link analysis and timeline charting for OC, drug and HT cases; also used in JIT work with European partners</span>
+    </div>
+    <div class="tool-item">
+      <strong>EncroChat / Sky ECC intercept data</strong>
+      <span>DIICOT and DCCO exploit encrypted-phone takedown data in OC network reconstruction; increasing shift to newer platforms being monitored by DCCO cybercrime investigators</span>
+    </div>
+    <div class="tool-item">
+      <strong>ROCRIS / SIS II / Europol SIENA</strong>
+      <span>ROCRIS is Romania's national criminal records information system; linked to EU Schengen Information System and Europol SIENA secure channel; NCB Bucharest manages INTERPOL databases for 60,000+ officers nationally</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>

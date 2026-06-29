@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northern Ireland — Organised Crime Investigation Agencies</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-header { max-width: 960px; margin: 0 auto 2.5rem; }
+  .page-header h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .page-header p { font-size: 14px; color: #73726c; line-height: 1.55; }
+
+  .section { max-width: 960px; margin: 0 auto 2rem; }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #888780; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 0.5px solid #d3d1c7;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .tier-badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .grid { display: grid; gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: #ffffff; border-radius: 12px; border: 0.5px solid #d3d1c7;
+    padding: 16px 18px 14px; text-decoration: none; display: flex;
+    flex-direction: column; gap: 4px; transition: border-color 0.15s, background 0.15s;
+    cursor: pointer; position: relative; color: inherit;
+  }
+
+  .card:hover { border-color: #888780; background: #faf9f6; }
+  .card:hover .ext-icon { opacity: 1; }
+
+  .ext-icon {
+    position: absolute; top: 14px; right: 14px; opacity: 0;
+    transition: opacity 0.15s; font-size: 13px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .li-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #0A66C2; color: #fff;
+  }
+
+  .web-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 5px; border-radius: 3px; background: #5f5e5a; color: #fff;
+  }
+
+  .card-abbr { font-size: 15px; font-weight: 500; }
+  .card-name { font-size: 12px; color: #5f5e5a; line-height: 1.4; }
+  .card-role { font-size: 11px; color: #888780; margin-top: 4px; line-height: 1.4; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
+  .tag-oc    { background: #FAECE7; color: #712B13; }
+  .tag-drug  { background: #E6F1FB; color: #0C447C; }
+  .tag-ht    { background: #EEEDFE; color: #3C3489; }
+  .tag-fin   { background: #EAF3DE; color: #27500A; }
+  .tag-int   { background: #F1EFE8; color: #444441; }
+  .tag-i2    { background: #FAEEDA; color: #633806; }
+  .tag-cyber { background: #E0F2F1; color: #004D40; }
+  .tag-para  { background: #FCE4EC; color: #880E4F; }
+  .tag-xbord { background: #FFF8E1; color: #6D4C00; }
+
+  .tier-intl  .card-abbr { color: #185FA5; }
+  .tier-gov   .card-abbr { color: #534AB7; }
+  .tier-psni  .card-abbr { color: #993C1D; }
+  .tier-task  .card-abbr { color: #1B6B3A; }
+  .tier-xbord .card-abbr { color: #6D4C00; }
+  .tier-over  .card-abbr { color: #444441; }
+
+  .tools-box {
+    max-width: 960px; margin: 0 auto; background: #ffffff;
+    border-radius: 12px; border: 0.5px dashed #b4b2a9; padding: 18px 20px;
+  }
+
+  .tools-box h3 { font-size: 13px; font-weight: 500; color: #5f5e5a; margin-bottom: 10px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tool-item strong { display: block; font-weight: 500; color: #1a1a18; margin-bottom: 2px; font-size: 12px; }
+  .tool-item span { color: #73726c; font-size: 12px; line-height: 1.4; }
+
+  .legend {
+    max-width: 960px; margin: 0 auto 1.5rem;
+    display: flex; align-items: center; gap: 16px; font-size: 11px; color: #73726c;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  footer {
+    max-width: 960px; margin: 2rem auto 0; font-size: 11px;
+    color: #888780; text-align: center; line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .legend { flex-wrap: wrap; gap: 8px; }
+  }
+  @media (max-width: 420px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Northern Ireland — organised crime investigation agencies</h1>
+  <p>Click any tile to open the agency's LinkedIn page (or official website where no LinkedIn exists). Northern Ireland has a uniquely complex OC landscape shaped by its paramilitary history, open land border with the Republic of Ireland, and a dual governance framework. The PSNI leads domestically; the NCA operates under Chief Constable consent; and cross-border work runs through the Joint Agency Task Force (JATF) with Irish counterparts.</p>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="li-badge">in</span> LinkedIn page</span>
+  <span class="legend-item"><span class="web-badge">web</span> Official website (no LinkedIn)</span>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="section tier-intl">
+  <div class="section-label">
+    International &amp; UK-wide level
+    <span class="tier-badge" style="background:#E6F1FB;color:#0C447C;">cross-border</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/europol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">Europol</span>
+      <span class="card-name">European Union Agency for Law Enforcement Cooperation</span>
+      <span class="card-role">NI cooperates via UK–Europol post-Brexit agreement. Europol intelligence shared with PSNI and NCA NI branch on cross-border OCGs and paramilitary criminal networks</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/interpol" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">INTERPOL</span>
+      <span class="card-name">International Criminal Police Organization</span>
+      <span class="card-role">PSNI accesses INTERPOL through UK NCB (NCA). NCA NI branch uses INTERPOL channels to pursue OCG fugitives in ROI and internationally; 6 NI fugitives located 2024–25</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/national-crime-agency" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCA (Northern Ireland)</span>
+      <span class="card-name">National Crime Agency — Northern Ireland Branch</span>
+      <span class="card-role">Operates under Chief Constable PSNI consent and DoJ NI General Authorisation. 141 disruptions impacting NI in H1 2025–26. Co-chairs PCTF and JATF; ILO posted in Dublin for ROI liaison</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- GOVERNANCE & PROSECUTION -->
+<div class="section tier-gov">
+  <div class="section-label">
+    Governance, prosecution &amp; ministerial oversight
+    <span class="tier-badge" style="background:#EEEDFE;color:#3C3489;">Stormont &amp; Westminster</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://uk.linkedin.com/company/department-of-justice-ni" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">DoJ NI</span>
+      <span class="card-name">Department of Justice Northern Ireland</span>
+      <span class="card-role">Devolved justice ministry — lead department for the Organised Crime Strategy 2021–24, OCTF oversight, legislative framework and NCA General Authorisation. Works with ROI counterpart under Intergovernmental Agreement</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.ppsni.gov.uk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PPSNI</span>
+      <span class="card-name">Public Prosecution Service for Northern Ireland</span>
+      <span class="card-role">NI's independent prosecution authority — decides charges and prosecutes all PSNI and NCA NI cases. Obtained POCA Restraint Orders in High Court on NCA operations June 2025. Equivalent to CPS (E&amp;W) and COPFS (Scotland)</span>
+      <div class="card-tags">
+        <span class="tag tag-int">prosecution</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://uk.linkedin.com/company/northern-ireland-office" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NIO</span>
+      <span class="card-name">Northern Ireland Office (UK Government)</span>
+      <span class="card-role">UK Government's representation in NI — oversees Additional Security Funding (ASF) for PSNI counter-terrorism and SOC capability. Coordinates between Westminster and Stormont on reserved policing matters</span>
+      <div class="card-tags">
+        <span class="tag tag-int">policy</span>
+        <span class="tag tag-para">paramilitary crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- PSNI -->
+<div class="section tier-psni">
+  <div class="section-label">
+    Police Service of Northern Ireland (PSNI) — Organised Crime Branch
+    <span class="tier-badge" style="background:#FAECE7;color:#712B13;">PSNI</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/police-service-of-northern-ireland" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">PSNI</span>
+      <span class="card-name">Police Service of Northern Ireland</span>
+      <span class="card-role">NI's single police force — successor to RUC, formed 2001 under Patten reforms. Organised Crime Branch leads all proactive SOC investigations. PSNI retains primacy; NCA requires Chief Constable consent to operate</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/our-departments/crime/organised-crime-branch/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PSNI — OCB</span>
+      <span class="card-name">Organised Crime Branch (within PSNI)</span>
+      <span class="card-role">Comprises: Organised Crime Units (OCUs), Modern Slavery &amp; Human Trafficking Unit, Paramilitary Crime Task Force (co-located with NCA/HMRC), and Economic Crime Unit. Primary investigative arm for all high-harm SOC</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-para">paramilitary crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/our-departments/crime/modern-slavery-human-trafficking/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PSNI — MSHTU</span>
+      <span class="card-name">Modern Slavery &amp; Human Trafficking Unit (within PSNI OCB)</span>
+      <span class="card-role">Investigates all HT cases under the Human Trafficking and Exploitation (Criminal Justice and Support for Victims) Act (NI) 2015. 7 victims safeguarded in Dec 2024 OC HT operation; works with NCA and border agencies</span>
+      <div class="card-tags">
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/our-departments/crime/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PSNI — ECU</span>
+      <span class="card-name">Economic Crime Unit (within PSNI OCB)</span>
+      <span class="card-role">Money laundering, asset recovery and financial crime. Works with HMRC and NCA on POCA 2002 orders — cash courier network dismantled 2023–25 (9 arrests, £757k + €223k seized crossing CTA)</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/our-departments/intelligence-branch/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PSNI — Intelligence Branch</span>
+      <span class="card-name">Intelligence Branch (within PSNI)</span>
+      <span class="card-role">Provides analytical and intelligence support to all OCB operations. Works with NCA, NCCU, international partners. Manages covert policing, RIPA authorisations and Serious Crime Analysis Section (SCAS) submissions to NCA</span>
+      <div class="card-tags">
+        <span class="tag tag-int">intelligence</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-i2">i2 Analyst's Notebook</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/our-departments/specialist-operations-branch/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PSNI — SOB</span>
+      <span class="card-name">Specialist Operations Branch (within PSNI)</span>
+      <span class="card-role">Specialist surveillance, technical operations and firearms support for complex SOC and national security investigations. 3,200+ deployments in 2024–25. Supports NCA and HMRC technical operations in NI</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">surveillance</span>
+        <span class="tag tag-para">paramilitary crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- MULTI-AGENCY TASKFORCES -->
+<div class="section tier-task">
+  <div class="section-label">
+    Multi-agency taskforces — unique to Northern Ireland
+    <span class="tier-badge" style="background:#D6EDE2;color:#1B6B3A;">Taskforces</span>
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.octf.gov.uk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">OCTF</span>
+      <span class="card-name">Organised Crime Task Force</span>
+      <span class="card-role">NI's strategic multi-agency OC coordination body — PSNI, NCA, HMRC, DoJ, Border Force, Home Office Immigration Enforcement, NIEA, NI Prison Service and others. Publishes annual threat assessments and strategy</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-int">multi-agency</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nationalcrimeagency.gov.uk/what-we-do/how-we-work/paramilitary-crime-task-force" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">PCTF</span>
+      <span class="card-name">Paramilitary Crime Task Force</span>
+      <span class="card-role">Co-located PSNI, NCA and HMRC team — unique to NI. Targets ceasefire paramilitary groups engaged in extortion, drug dealing, money laundering and violence. Uses Disclosure Orders as key asset-denial tool</span>
+      <div class="card-tags">
+        <span class="tag tag-para">paramilitary crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.psni.police.uk/about-us/what-we-do/joint-agency-task-force/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">JATF</span>
+      <span class="card-name">Joint Agency Task Force (Cross-Border)</span>
+      <span class="card-role">PSNI + An Garda Síochána + NCA + CAB + Irish Customs + Revenue + Immigration. Targets OCGs operating across the NI–ROI border. Unique in UK policing — a standing joint law enforcement task force with a foreign country</span>
+      <div class="card-tags">
+        <span class="tag tag-xbord">cross-border</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CROSS-BORDER ROI PARTNERS -->
+<div class="section tier-xbord">
+  <div class="section-label">
+    Republic of Ireland partner agencies (cross-border cooperation)
+    <span class="tier-badge" style="background:#FFF8E1;color:#6D4C00;">ROI partners</span>
+  </div>
+  <div class="grid grid-2">
+
+    <a class="card" href="https://www.garda.ie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">An Garda Síochána</span>
+      <span class="card-name">An Garda Síochána — Ireland's National Police Service</span>
+      <span class="card-role">Primary ROI partner — joint cross-border operations with PSNI through JATF. Regular joint visibility operations on the border. The Garda National Drugs &amp; Organised Crime Bureau (GNDOCB) is key counterpart to PSNI OCB</span>
+      <div class="card-tags">
+        <span class="tag tag-xbord">cross-border</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.cab.ie" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">CAB</span>
+      <span class="card-name">Criminal Assets Bureau (Republic of Ireland)</span>
+      <span class="card-role">ROI asset recovery agency — JATF member. Targets proceeds of crime on the southern side of the border from OCGs with NI links. Uses ROI Proceeds of Crime Act to seize assets without conviction</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-xbord">cross-border</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- SPECIALIST PARTNER AGENCIES -->
+<div class="section tier-over">
+  <div class="section-label">
+    Specialist partner agencies &amp; oversight
+  </div>
+  <div class="grid grid-3">
+
+    <a class="card" href="https://www.linkedin.com/company/hmrc" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">HMRC NI</span>
+      <span class="card-name">HM Revenue &amp; Customs — Northern Ireland</span>
+      <span class="card-role">OCTF and PCTF member — co-located with PSNI and NCA in PCTF. Targets tax fraud, excise crime, fuel laundering, illicit tobacco and money laundering with paramilitary and OCG links</span>
+      <div class="card-tags">
+        <span class="tag tag-fin">financial crime</span>
+        <span class="tag tag-para">paramilitary crime</span>
+        <span class="tag tag-drug">drugs</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">NIEA</span>
+      <span class="card-name">Northern Ireland Environment Agency</span>
+      <span class="card-role">OCTF member — investigates waste crime, fuel laundering and environmental crime linked to OC and paramilitary groups. A significant OC revenue stream in NI given proximity to the ROI border</span>
+      <div class="card-tags">
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-para">paramilitary crime</span>
+        <span class="tag tag-fin">financial crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.linkedin.com/company/national-cyber-security-centre/" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NCSC / NCCU</span>
+      <span class="card-name">National Cyber Security Centre / NCA Cyber Crime Unit</span>
+      <span class="card-role">NCCU supported PSNI investigation into DIGITAL STRESS — world's largest DDoS-as-a-Service platform, administrator arrested in NI July 2024. NCSC provides cyber threat intelligence to PSNI</span>
+      <div class="card-tags">
+        <span class="tag tag-cyber">cybercrime</span>
+        <span class="tag tag-oc">organised crime</span>
+        <span class="tag tag-int">intelligence</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://uk.linkedin.com/company/northernirelandpolicingboard" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="li-badge">in</span> ↗</span>
+      <span class="card-abbr">NIPB</span>
+      <span class="card-name">Northern Ireland Policing Board</span>
+      <span class="card-role">Independent democratic oversight of PSNI — holds Chief Constable to account. Scrutinises NCA NI performance at public board meetings. 10 Assembly members + 9 independent community members</span>
+      <div class="card-tags">
+        <span class="tag tag-int">oversight</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.borderforce.gov.uk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Border Force NI</span>
+      <span class="card-name">UK Border Force — Northern Ireland ports &amp; airports</span>
+      <span class="card-role">OCTF member — operates at Belfast International, George Best Belfast City, Belfast Port and Larne. Drug and HT interdiction at sea and air entry points. Works closely with PSNI and NCA on cross-channel smuggling</span>
+      <div class="card-tags">
+        <span class="tag tag-drug">drugs</span>
+        <span class="tag tag-ht">human trafficking</span>
+        <span class="tag tag-xbord">cross-border</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.nipolicingboard.org.uk" target="_blank" rel="noopener">
+      <span class="ext-icon"><span class="web-badge">web</span> ↗</span>
+      <span class="card-abbr">Criminal Justice Inspection NI</span>
+      <span class="card-name">Criminal Justice Inspection Northern Ireland (CJI)</span>
+      <span class="card-role">Independent inspection body for all NI criminal justice organisations — inspects PSNI, PPSNI, NI Prison Service and probation. Reviews effectiveness of OC and HT investigation and prosecution</span>
+      <div class="card-tags">
+        <span class="tag tag-int">oversight</span>
+        <span class="tag tag-oc">organised crime</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-box">
+  <h3>Analysis tools in use across agencies</h3>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <strong>i2 Analyst's Notebook</strong>
+      <span>Used by PSNI OCB Intelligence Branch and NCA NI Branch — network mapping, link analysis and timeline charting of OCG and paramilitary criminal networks</span>
+    </div>
+    <div class="tool-item">
+      <strong>POCA 2002 — Civil Recovery &amp; Disclosure Orders</strong>
+      <span>NCA uniquely deploys civil recovery and tax powers under Parts 5 &amp; 6 POCA in NI — key tool where criminal prosecution is not possible. PCTF uses Disclosure Orders as primary asset-denial tactic</span>
+    </div>
+    <div class="tool-item">
+      <strong>ANPR / CTA monitoring / COMPASS</strong>
+      <span>Automatic Number Plate Recognition across NI road network; monitoring of the Common Travel Area (NI–ROI) border corridor for cash couriers; COMPASS (PSNI command/intelligence system)</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  For internal reference only — LinkedIn pages verified June 2026. NCA operations in NI require Chief Constable PSNI consent under a General Authorisation agreed with DoJ NI (Crime and Courts Act 2013). Tiles marked <strong>web</strong> link to official websites (no LinkedIn page exists for those agencies).
+</footer>
+
+</body>
+</html>
