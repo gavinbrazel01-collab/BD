@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  /* ── Procurement boolean terms appended to every search ── */
+  /* ── Procurement boolean terms ── */
   const PROCUREMENT_TERMS = [
     'procurement',
     'tender',
@@ -46,43 +46,33 @@
 
   function buildNameClause(abbr, fullName, nativeName) {
     const parts = [];
-    if (abbr)       parts.push(`"${abbr}"`);
-    if (fullName)   parts.push(`"${fullName}"`);
+    if (abbr)     parts.push(`"${abbr}"`);
+    if (fullName) parts.push(`"${fullName}"`);
     if (nativeName && nativeName !== fullName) parts.push(`"${nativeName}"`);
     return parts.length > 1
       ? '(' + parts.join(' OR ') + ')'
       : parts[0] || '""';
   }
 
-  /* ── Extract text from a card ── */
+  /* ── Extract agency name data from a card element ── */
   function extractCardData(card) {
-    // .card-abbr holds the short name / abbreviation
-    const abbrEl    = card.querySelector('.card-abbr');
-    // .card-name holds the full (often bilingual) name
-    const nameEl    = card.querySelector('.card-name');
-    // .card-role holds the role description — we don't need it for the query
-    // but the full name element often contains "English name — Native name"
-    // separated by an em-dash, so we split on that if present.
+    const abbrEl = card.querySelector('.card-abbr');
+    const nameEl = card.querySelector('.card-name');
 
     const rawAbbr = abbrEl ? abbrEl.textContent.trim() : '';
     const rawName = nameEl ? nameEl.textContent.trim() : '';
 
-    // Many cards format the name as:
-    // "Full English Name (Native Name in Brackets)"  or
-    // "Native Name (translation)"
-    // We pass the whole thing as fullName and let the OR clause handle it.
-    // Split on em-dash or parenthesis to attempt to separate:
     let englishName = rawName;
     let nativeName  = '';
 
-    // Pattern: "Native Name (English translation)" or vice-versa
+    // "Native Name (English translation)" pattern
     const parenMatch = rawName.match(/^(.+?)\s*\((.+?)\)/);
     if (parenMatch) {
       englishName = parenMatch[1].trim();
       nativeName  = parenMatch[2].trim();
     }
 
-    // Pattern: "Name — Native Name"
+    // "Name — Native Name" pattern
     const dashMatch = rawName.match(/^(.+?)\s*[—–-]{1,2}\s*(.+)$/);
     if (dashMatch && !parenMatch) {
       englishName = dashMatch[1].trim();
@@ -96,7 +86,7 @@
     };
   }
 
-  /* ── Indicator badge shown while Shift is held ── */
+  /* ── Indicator badge ── */
   let badge = null;
 
   function showBadge() {
@@ -105,21 +95,20 @@
     badge.id = 'shift-search-badge';
     badge.textContent = '⇧ Shift + click any card to search Bing for procurement contacts';
     Object.assign(badge.style, {
-      position:        'fixed',
-      bottom:          '20px',
-      left:            '50%',
-      transform:       'translateX(-50%)',
-      background:      '#1a1a18',
-      color:           '#f5f4f0',
-      fontSize:        '12px',
-      padding:         '8px 16px',
-      borderRadius:    '20px',
-      zIndex:          '9999',
-      pointerEvents:   'none',
-      letterSpacing:   '0.02em',
-      boxShadow:       '0 2px 12px rgba(0,0,0,0.25)',
-      transition:      'opacity 0.15s',
-      whiteSpace:      'nowrap',
+      position:      'fixed',
+      bottom:        '20px',
+      left:          '50%',
+      transform:     'translateX(-50%)',
+      background:    '#1a1a18',
+      color:         '#f5f4f0',
+      fontSize:      '12px',
+      padding:       '8px 16px',
+      borderRadius:  '20px',
+      zIndex:        '9999',
+      pointerEvents: 'none',
+      letterSpacing: '0.02em',
+      boxShadow:     '0 2px 12px rgba(0,0,0,0.25)',
+      whiteSpace:    'nowrap',
     });
     document.body.appendChild(badge);
   }
@@ -130,7 +119,7 @@
     badge = null;
   }
 
-  /* ── Card hover highlight while Shift is held ── */
+  /* ── Card highlight styles while Shift held ── */
   function addShiftStyles() {
     if (document.getElementById('shift-search-style')) return;
     const style = document.createElement('style');
@@ -149,13 +138,16 @@
     document.head.appendChild(style);
   }
 
-  /* ── Main event wiring ── */
+  /* ── Shift state tracking ── */
+  let shiftHeld = false;
+
+  /* ── Init ── */
   function init() {
     addShiftStyles();
 
-    /* Show badge and highlight on Shift keydown */
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Shift') {
+      if (e.key === 'Shift' && !shiftHeld) {
+        shiftHeld = true;
         document.body.classList.add('shift-held');
         showBadge();
       }
@@ -163,20 +155,24 @@
 
     document.addEventListener('keyup', function (e) {
       if (e.key === 'Shift') {
+        shiftHeld = false;
         document.body.classList.remove('shift-held');
         hideBadge();
       }
     });
 
-    /* Intercept shift+click on any card */
-    document.addEventListener('click', function (e) {
+    // Use mousedown in capture phase — fires before the browser
+    // follows the <a href>, giving us a chance to intercept cleanly.
+    document.addEventListener('mousedown', function (e) {
       if (!e.shiftKey) return;
+      if (e.button !== 0) return; // left click only
 
       const card = e.target.closest('.card, .country-card');
       if (!card) return;
 
+      // Prevent the mousedown from starting any link navigation
       e.preventDefault();
-      e.stopPropagation();
+      e.stopImmediatePropagation();
 
       const { abbr, fullName, nativeName } = extractCardData(card);
 
@@ -187,10 +183,20 @@
 
       const url = buildQuery(abbr, fullName, nativeName);
       window.open(url, '_blank', 'noopener,noreferrer');
-    }, true); /* capture phase so we intercept before the <a> fires */
+
+    }, true); // capture: true — runs before any element's own handlers
+
+    // Also block the click event that follows mousedown, just in case
+    document.addEventListener('click', function (e) {
+      if (!e.shiftKey) return;
+      const card = e.target.closest('.card, .country-card');
+      if (!card) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }, true);
+
   }
 
-  /* Run after DOM is ready */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
